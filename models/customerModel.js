@@ -12,6 +12,7 @@ var Customer = mongoose.model('Customer', {
   product_id  : {type : String},
   orderNum    : {type : String},
   address     : {type : String},
+  phoneNumber : {type : String},
   paid        : {type : Boolean},
   inProgress  : {type : Boolean},
   complete    : {type : Boolean},

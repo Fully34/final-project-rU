@@ -30,9 +30,9 @@ app.get('/', customerController.index); //> custController
 
 //============================== admin routing ==============================//
 
-// NEED TO DO APP.USE(isAutorized)
-// app.get('/admin', adminController.index); //> adminController
+// ================== DON'T NEED THIS ROUTE, SINCE IT'S HANDLED BY ANGULAR =====================//
 
+// app.get('/admin', adminController.index); //> adminController
         
 //============================== server ==============================//
         
