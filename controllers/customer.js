@@ -13,4 +13,4 @@ var customerController = {
 	}
 };
 
-module.exports = indexController;
+module.exports = customerController;

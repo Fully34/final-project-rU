@@ -3,7 +3,6 @@
 
 var mongoose = require('mongoose'); 
 
-
 //============================== schema ==============================//
 
 var Item = mongoose.model('Item', {
@@ -14,7 +13,8 @@ var Item = mongoose.model('Item', {
   image       : {type : String},
   description : {type : String},
   price       : {type : Number},
-  type        : {type : String, validate : /(art|rack)/}
+  type        : {type : String, validate : /(art|rack)/},
+  forSale     : {type : Boolean}
 });
 
 module.exports = Item;

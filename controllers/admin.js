@@ -2,6 +2,8 @@
 //============================== requirements ==============================//
 
 var mongoose = require('mongoose');
+var Customer = require('../models/customerModel.js');
+var Item     = require('../models/itemModel.js');
 
  //============================== controller ==============================//
           
@@ -11,4 +13,4 @@ var adminController = {
   }
 };
 
-module.exports = indexController;
+module.exports = adminController;
