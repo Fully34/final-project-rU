@@ -1,14 +1,15 @@
 doctype html
-html(lang='en', ng-app)
+html(lang='en', ng-app='store')
   head
     meta(charset="utf-8")
     title Untitled
 
   body
-
-    block content
+  
+    div(ng-view)
 
 
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-resource.js')
+  script(type='text/javascript', src='js/main.js')

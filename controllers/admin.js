@@ -9,7 +9,7 @@ var Item     = require('../models/itemModel.js');
           
 var adminController = {
   index: function(req, res) {
-    res.render('index');
+    res.render('layout');
   }
 };
 

@@ -3,7 +3,8 @@
         
 var express = require('express');
 var bodyParser = require('body-parser');
-var indexController = require('./controllers/index.js');
+var customerController = require('./controllers/customer.js');
+var adminController = require('./controllers/admin.js');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/cam-store');
 
@@ -16,6 +17,13 @@ app.use(express.static(__dirname + '/public'));
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json()); //> handle json data coming from POST reqs
 
+
+//============================== template routing ==============================//
+        
+app.get('/template/:templateName', function(req, res){
+  res.render('templates/' + req.params.templateName)
+});
+
 //============================== client routing ==============================//
         
 app.get('/', customerController.index); //> custController
@@ -23,7 +31,8 @@ app.get('/', customerController.index); //> custController
 //============================== admin routing ==============================//
 
 // NEED TO DO APP.USE(isAutorized)
-app.get('/', adminController.index); //> adminController
+// app.get('/admin', adminController.index); //> adminController
+
         
 //============================== server ==============================//
         
