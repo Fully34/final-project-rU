@@ -13,6 +13,7 @@ var Customer = mongoose.model('Customer', {
   orderNum    : {type : String},
   address     : {type : String},
   phoneNumber : {type : String},
+  email       : {type : String},
   paid        : {type : Boolean},
   inProgress  : {type : Boolean},
   complete    : {type : Boolean},
