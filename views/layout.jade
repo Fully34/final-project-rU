@@ -3,13 +3,28 @@ html(lang='en', ng-app='store')
   head
     meta(charset="utf-8")
     title Untitled
+    link(rel="stylesheet", type="text/css", href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.1/normalize.min.css")
+    link(rel="stylesheet", href="bootstrap/css/bootstrap.min.css")
+    link(href='http://fonts.googleapis.com/css?family=Rye', rel='stylesheet', type='text/css')
+    link(rel='stylesheet', type='text/css', href='css/main.css')
 
   body
   
+    hr(class='nav-break')
+    span
+      a(href='#') About
+    span
+      a(href='#') Queue
+    span
+      a(href='#') Portfolio
+    span
+      a(href='#') Shop
+
     div(ng-view)
 
 
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.js')
   script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-resource.js')
+  script(src="bootstrap/js/bootstrap.min.js")
   script(type='text/javascript', src='js/main.js')
