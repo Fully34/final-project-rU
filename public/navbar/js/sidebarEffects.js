@@ -28,7 +28,7 @@
 	function init() {
 
 		var container = document.getElementById( 'st-container' ),
-			buttons = Array.prototype.slice.call( document.querySelectorAll( '#st-trigger-effects > button' ) ),
+			buttons = Array.prototype.slice.call( document.querySelectorAll( '.st-trigger-effects > button' ) ),
 			// event type (if mobile use touch events)
 			eventtype = mobilecheck() ? 'touchstart' : 'click',
 			resetMenu = function() {

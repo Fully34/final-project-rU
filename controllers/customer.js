@@ -4,6 +4,7 @@
 var mongoose = require('mongoose');
 var Customer = require('../models/customerModel.js');
 var Item     = require('../models/itemModel.js');
+var stripe = require('stripe');
 
  //============================== controller ==============================//
           

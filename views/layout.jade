@@ -3,8 +3,6 @@ html(lang='en', ng-app='store')
   head
     meta(charset="utf-8")
     title Untitled
-
-
     link(rel="stylesheet", type="text/css", href="navbar/css/normalize.css")
     link(href='http://fonts.googleapis.com/css?family=Rye', rel='stylesheet', type='text/css')
     link(rel="stylesheet", href="navbar/css/component.css")
@@ -15,35 +13,36 @@ html(lang='en', ng-app='store')
 
   body
     
-    div(id='st-container',class='st-container st-effect-11')
-      nav(class='st-menu st-effect-11', id='menu-11') 
-        h2(class="icon icon-lab") SideBar
+    //- navbar originally created by Mary Lou (http://tympanus.net/codrops/author/crnacura/), she's awesome
+    div(id='st-container',class='st-container st-effect-10')
+      nav(class='st-menu st-effect-10', id='menu-10') 
+        h2(class="icon icon-key") Menu!
         ul
           li
-            a(class="icon icon-wallet", href="#") Home
+            a(class="icon icon-location", ng-href="/#/") Home
           li 
-            a(class="icon icon-data", href="#") About  
+            a(class="icon icon-fire", ng-href="/#/about") About  
           li
-            a(class="icon icon-location", href='#') Queue
+            a(class="icon icon-note", ng-href='/#/queue') Queue
           li
-            a(class="icon icon-study", href="#") Portfolio
+            a(class="icon icon-stack", ng-href="/#/portfolio") Portfolio
           li
-            a(class="icon icon-photo", href="#") Shop
+            a(class="icon icon-cloud", ng-href="/#/shop") Shop
+
       div(class='st-pusher')
-        div(class='st-content')
-          div(class='st-content-inner')
-            h1 SO MUCH CONTENT
-            p div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorem neque autem molestias doloribus doloremque veniam est ducimus aliquid provident. Quo eius quisquam repudiandae quod dolor magnam. Officiis, quibusdam nemo totam! Illum cumque illo asperiores atque nihil mollitia aliquid quas, temporibus, quam quasi ratione reiciendis animi deserunt inventore delectus sed! Rem illo, laboriosam consectetur. Optio ea architecto, aliquam blanditiis repellat reprehenderit?
 
-          div(id="st-trigger-effects")
-            button(data-effect="st-effect-11") Scale &amp; rotate pusher
+          div(class="st-trigger-effects abs-horiz-center")
+            hr(class='line-break')
+            button(data-effect="st-effect-10" class='let-it-breathe menu-tog-btn') Show the Menu!
+            hr(class='line-break')
+        
 
-        div(ng-view)
+          div(ng-view)
 
 
-    //- script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js')
-    //- script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.js')
-    //- script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-resource.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.js')
+    script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-resource.js')
     script(type='text/javascript', src="navbar/js/classie.js")
     script(type='text/javascript', src="navbar/js/sidebarEffects.js")
-    //- script(type='text/javascript', src='js/main.js')
+    script(type='text/javascript', src='js/main.js')

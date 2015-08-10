@@ -20,7 +20,7 @@ app.use(bodyParser.json()); //> handle json data coming from POST reqs
 
 //============================== template routing ==============================//
         
-app.get('/template/:templateName', function(req, res){
+app.get('/templates/:templateName', function(req, res){
   res.render('templates/' + req.params.templateName)
 });
 
@@ -29,6 +29,8 @@ app.get('/template/:templateName', function(req, res){
 app.get('/', customerController.index); //> custController
 
 //============================== admin routing ==============================//
+
+    // route here
 
 // ================== DON'T NEED THIS ROUTE, SINCE IT'S HANDLED BY ANGULAR =====================//
 

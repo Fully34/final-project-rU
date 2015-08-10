@@ -2,101 +2,163 @@
 /*===========================================================================*/
                         /* ~~~ Utility ~~~ */ 
 /*===========================================================================*/
-    .align-left {
-        left: 10px;
-    }
+  .align-left {
+      left: 10px;
+  }
 
-    body {
-        background-color: #F8EBDF;
-        /*height: 5000px;*/
-        font-family: "Rye", sans-serif;
-    }
+  body {
+      background-color: #F8EBDF;
+      /*height: 5000px;*/
+      font-family: "Rye", sans-serif;
+      text-align: center;
+  }
 
-    .big-wrapper {
-        max-width: 1200px;
-        margin: 0 auto;
-    }
+  .big-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+  }
 
-    .landing-border-accent {
-        border-right: 2px solid #CCDDE4;
-        border-left: 2px solid #CCDDE4;
-        box-shadow: 0px 0px 2px 3px rgba(239, 136, 73, 0.5);
-    }
+  .main-container {
+    text-align: center;
+  }
+  .landing-border-accent {
+      border-right: 2px solid #CCDDE4;
+      border-left: 2px solid #CCDDE4;
+      box-shadow: 0px 0px 2px 3px rgba(239, 136, 73, 0.5);
+  }
 
-    .background-img {
-        position: fixed; 
-        top: 0; 
-        left: 0; 
-        min-width: 100%;
-        min-height: 100%;
-        z-index: -10;
-    }
+  .background-img {
+      position: fixed; 
+      top: 0; 
+      left: 0; 
+      min-width: 100%;
+      min-height: 100%;
+      z-index: -10;
+  }
 
-    .queue-font {
-        color: #CCDDE4;
-    }
+  .queue-font {
+      color: #CCDDE4;
+  }
 
-    .clearfix {
-        overflow: auto;
-        z-index: 10;
-    }
+  .clearfix {
+      overflow: auto;
+      z-index: 10;
+  }
 
-    .line-break {
-        border: 1px solid #eee;
-    }
+  .line-break {
+      border: 1px solid #E1B651;
+  }
 
-    .border-rad {
-        border-radius: 5px;
-    }
+  .border-rad {
+      border-radius: 5px;
+  }
+
+  .relative {
+      position: relative;
+  }
+
+  .horiz-center {
+      left: 50%;
+      transform: translateX(-50%); 
+  }
+
+  .vert-center {
+      top: 50%;
+      transform: translateY(-50%);
+  }
+  .abs-horiz-center {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+  }
+
+  .abs-vert-center {
+      position: absolute;
+      top:50%;
+      transform: translateY(-50%);
+  }
+
+  .txt-center {
+      text-align: center;
+  }
+
+  .absolute {
+      position: absolute;
+  }
+  
+  .inline-block {
+      display: inline-block;
+  }
+
+  .page-break {
+      border: 1px solid #CCDDE4;
+      box-shadow: 0px 0px 2px 3px rgba(239, 136, 73, 0.5);
+      width: 100%;
+  }
+
+  .spacer {
+      height: 300px;
+  }
+
+  .spacer-small {
+      height: 50px;
+  }
+
+  .menu-tog-btn {
+    border-radius: 10px;
+  }
+  
+  .let-it-breathe {
+    margin: 30px;
+    padding: 20px;
+  }
+
+  .let-it-breathe-a-little {
+    margin: 10px;
+    padding: 20px;
+  }
+/*===========================================================================*/
+                        /* ~~~ landing page (cust) ~~~ */ 
+/*===========================================================================*/
+
+  .landing-link {
+    background-color: white;
+    border: 2px dashed #C56616;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .landing-container {
+    background-image : url(http://www.wallpaperup.com/uploads/wallpapers/2013/02/15/40517/3a90a29d9cc2fdd7bf7c0c26e17c7dd2.jpg);
+    background-size: cover;
+    overflow: auto;
+    height: 4000px;
+  }
 
 
-    .relative {
-        position: relative;
-    }
 
-    .horiz-center {
-        left: 50%;
-        transform: translateX(-50%); 
-    }
 
-    .vert-center {
-        top: 50%;
-        transform: translateY(-50%);
-    }
-    .abs-horiz-center {
-        position: absolute;
-        left: 50%;
-        transform: translateX(-50%);
-    }
 
-    .abs-vert-center {
-        position: absolute;
-        top:50%;
-        transform: translateY(-50%);
-    }
 
-    .txt-center {
-        text-align: center;
-    }
 
-    .absolute {
-        position: absolute;
-    }
-    
-    .inline-block {
-        display: inline-block;
-    }
 
-    .page-break {
-        border: 1px solid #CCDDE4;
-        box-shadow: 0px 0px 2px 3px rgba(239, 136, 73, 0.5);
-        width: 100%;
-    }
 
-    .spacer {
-        height: 300px;
-    }
 
-    .spacer-small {
-        height: 50px;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
