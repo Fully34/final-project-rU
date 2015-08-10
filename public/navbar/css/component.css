@@ -5,8 +5,7 @@
 	box-sizing: border-box;
 }
 
-html,
-body,
+
 .st-container,
 .st-pusher,
 .st-content {
@@ -420,8 +419,8 @@ body,
 /* Effect 11: Scale and rotate pusher */
 
 .st-effect-11.st-container {
-	-webkit-perspective: 1500px;
-	perspective: 1500px;
+	-webkit-perspective: 4000px;
+	perspective: 4000px;
 }
 
 .st-effect-11 .st-pusher {
@@ -567,3 +566,61 @@ body,
 .no-js .st-pusher {
 	padding-left: 300px;
 }
+
+
+/*===========================================================================*/
+                        /* ~~~ media query ~~~ */ 
+/*===========================================================================*/
+
+@media (max-width: 400px) {
+  .st-menu {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100000;
+    visibility: hidden;
+    width: 100%;
+    height: auto;
+    overflow: auto;
+    background: #48a770;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+  }
+
+  #menu-10 {
+    z-index: 100;
+  }
+
+  .st-menu ul li {
+    display: inline-block;
+    padding: 1em 1em 1em 1.2em;
+    outline: none;
+    box-shadow: none;
+    color: #f3efe0;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+    font-weight: 400;
+    -webkit-transition: background 0.3s, box-shadow 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .st-menu ul li a {
+    display: inline-block;
+    padding: 1em 1em 1em 1.2em;
+    outline: none;
+    box-shadow: none;
+    color: #f3efe0;
+    text-transform: uppercase;
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    letter-spacing: 1px;
+    font-weight: 400;
+    -webkit-transition: background 0.3s, box-shadow 0.3s;
+    transition: background 0.3s, box-shadow 0.3s;
+  }
+  .st-menu ul li:first-child a {
+    box-shadow: none;
+  }
+}
+
+
+
