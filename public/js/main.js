@@ -95,13 +95,17 @@ store.controller('adminHome', function($scope) {
 
     console.log("Here's your shop! | " + itemFactory.model);
 
-    $scope.showForm = false;
 
     $scope.toggleForm = function() {
 
       $scope.showForm = !$scope.showForm
     }
 
+    //> access the item array from the itemFactory
+
+    $scope.items = itemFactory.items
+
+    //> add item functionality -> Sends post request
     $scope.addItem = function() {
 
       var newItem = new itemFactory.model(this.newItem);

@@ -197,13 +197,28 @@ button:hover .menu-icon {
   width: 90%;
 }
 
+.item-container {
+  border: 1px solid #6C0900;
+  display: inline-block;
+  padding: 1.1em;
+  margin: 20px;
+  width: 45%;
+}
 
+.item-container h3, p {
+  text-align: left;
+}
+/*===========================================================================*/
+                        /* ~~~ media queries ~~~ */ 
+/*===========================================================================*/
 
+@media (max-width: 1000px) {
 
-
-
-
-
+  .item-container {
+    width: 450px;
+    margin: 3em auto;
+  }
+}
 
 
 
