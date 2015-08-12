@@ -7,7 +7,7 @@
   }
 
   body {
-      background-color: #F8EBDF;
+      background-color: #C56615;
       /*height: 5000px;*/
       font-family: "Rye", sans-serif;
       text-align: center;
@@ -20,6 +20,7 @@
 
   .main-container {
     text-align: center;
+    background-color: #893F13;
   }
 
   .landing-border-accent {
@@ -207,6 +208,16 @@ button:hover .menu-icon {
 
 .item-container h3, p {
   text-align: left;
+}
+
+/*===========================================================================*/
+                        /* ~~~ customer shop ~~~ */ 
+/*===========================================================================*/
+
+.shop-img {
+  border: 1px solid #6C0900;
+  height: 200px;
+  width: 200px;
 }
 /*===========================================================================*/
                         /* ~~~ media queries ~~~ */ 

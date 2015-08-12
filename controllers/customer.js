@@ -11,7 +11,22 @@ var stripe = require('stripe');
 var customerController = {
 	index: function(req, res) {
 		res.render('layout');
-	}
+	},
+
+  // getShop : function(req, res) {
+
+  //   Item.find({}, function(err, doc) {
+
+  //     if (err) {
+
+  //       res.send("ERROR", err);
+
+  //     } else {
+
+  //       res.send(doc);
+  //     }
+  //   })
+  // }
 };
 
 module.exports = customerController;

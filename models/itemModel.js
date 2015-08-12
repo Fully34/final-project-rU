@@ -9,7 +9,7 @@ var itemSchema = mongoose.Schema({
 
   //> THESE WILL HAVE _id FROM MONGOOSE --> Not sure if useful, but keep in mind
   name        : {type : String},
-  image       : {type : String, default : 'http://www.placehold.it/300'},
+  image       : {type : String, default : 'http://www.placehold.it/200'},
   description : {type : String},
   price       : {type : Number},
   type        : {type : String, validate : /(Art|Rack)/},

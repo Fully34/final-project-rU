@@ -8,6 +8,15 @@ var adminController = require('./controllers/admin.js');
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/cam-store');
 
+//============================== requirements for passport ==============================//
+
+var session = require('express-session');
+var cookieParser = require('cookie-parser');
+var flash =  require('connect-flash');
+var passport = require('passport');
+var passportConfig = require('./config/passport');
+
+
 //============================== config ==============================//
         
 var app = express();
@@ -28,6 +37,9 @@ app.get('/templates/:templateName', function(req, res){
         
 app.get('/', customerController.index); //> custController
 
+// > DONT NEED THIS, ANGULAR WILL PROVIDE
+// app.get('/shop', customerController.getShop);
+
 //============================== admin routing ==============================//
 
     // route here
@@ -36,9 +48,10 @@ app.get('/', customerController.index); //> custController
 
 // app.get('/admin', adminController.index); //> adminController
 
-app.get('/admin/addItem', adminController.get)
-app.post('/admin/addItem', adminController.create);
-
+app.get('/api/items', adminController.get);
+app.post('/api/items/:id', adminController.update);
+app.post('/api/items', adminController.create);
+app.delete('/api/items/:id', adminController.remove);
 //============================== server ==============================//
         
 var server = app.listen(9001, function() {

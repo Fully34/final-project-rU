@@ -1,2 +1,10 @@
-div(class='spacer')
-  h1 CUSTOMER SHOP
+div(class='container big-wrapper main-container clearfix')
+  div(class='shop-header')
+    h1 CUSTOMER SHOP
+
+  div(class='item-container', ng-repeat='item in items', ng-if='item.forSale')
+      h3 {{item.name}}
+      img(class='shop-img' ng-src="{{item.image}}", alt="image")
+      p Description: {{item.description}}
+      p Price: {{item.price}}
+      button(class='add-to-cart-btn' ng-click='addToCart( item )') Add To Cart
