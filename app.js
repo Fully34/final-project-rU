@@ -35,7 +35,10 @@ app.get('/', customerController.index); //> custController
 // ================== DON'T NEED THIS ROUTE, SINCE IT'S HANDLED BY ANGULAR =====================//
 
 // app.get('/admin', adminController.index); //> adminController
-        
+
+app.get('/admin/addItem', adminController.get)
+app.post('/admin/addItem', adminController.create);
+
 //============================== server ==============================//
         
 var server = app.listen(9001, function() {

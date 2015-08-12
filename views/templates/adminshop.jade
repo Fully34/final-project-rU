@@ -1,2 +1,22 @@
-div(class='spacer')
-  h1 ADMIN SHOP
+
+div(class=' big-wrapper main-container clearfix')
+  div(class=' add-item-btn-container inline-block clearfix', ng-show='!showForm')
+    button(class='add-item-btn' ng-click='toggleForm()') ADD ITEM
+  div(class=' add-form-container inline-block clearfix', ng-show='showForm')
+    form(ng-submit='addItem()')
+      label(for='name') Name:
+      input(class='field' type="text", name='name' ng-model='newItem.name')
+      label(for='price') Price: 
+      input(class='field' type="text", name='price' ng-model='newItem.price')
+      label(for='description') Description
+      textarea(class='field  textarea' type="text", name='description' ng-model='newItem.description')
+      select(name="type" ng-model='newItem.type')
+        option(value='Art') Art
+        option(value='Rack') Rack
+      input(type='submit' ng-click='toggleForm()')
+  div(class=' shop-item-container')
+    div(class='item-container', ng-repeat='item in items')
+      h3 {{item.name}}
+      p Description: {{item.description}}
+      p Price: {{item.price}}
+      input(type="checkbox" checked)

@@ -5,16 +5,18 @@ var mongoose = require('mongoose');
 
 //============================== schema ==============================//
 
-var Item = mongoose.model('Item', {
+var itemSchema = mongoose.Schema({
 
   //> THESE WILL HAVE _id FROM MONGOOSE --> Not sure if useful, but keep in mind
-  product_id  : {type : String},
   name        : {type : String},
-  image       : {type : String},
+  // image       : {type : String},
   description : {type : String},
   price       : {type : Number},
-  type        : {type : String, validate : /(art|rack)/},
-  forSale     : {type : Boolean}
+  type        : {type : String, validate : /(Art|Rack)/},
+  forSale     : {type : Boolean, default : false}
 });
+
+//============================== model ==============================//
+var Item = mongoose.model('Item', itemSchema);
 
 module.exports = Item;

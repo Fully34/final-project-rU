@@ -18,8 +18,6 @@
 }
 
 body {
-	background: #444;
-	color: #48a770;
 	font-weight: 300;
 	font-family: 'Lato', Calibri, Arial, sans-serif;
 }
@@ -151,21 +149,20 @@ a:hover, a:focus {
 
 button {
 	border: none;
-	padding: 0.6em 1.2em;
-	background: #388a5a;
-	color: #fff;
-	font-family: 'Lato', Calibri, Arial, sans-serif;
-	font-size: 1em;
+  margin: 10px;
+  margin-left: 15px;
+	padding: 0.3em 0.5em;
+	font-size: 1.5em;
 	letter-spacing: 1px;
 	text-transform: uppercase;
 	cursor: pointer;
 	display: inline-block;
-	margin: 3px 2px;
 	border-radius: 2px;
 }
 
 button:hover {
-	background: #2c774b;
+	background-color: #6D0000;
+  color: #E1E3BC;
 }
 
 .info {

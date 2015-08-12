@@ -10,6 +10,34 @@ var Item     = require('../models/itemModel.js');
 var adminController = {
   index: function(req, res) {
     res.render('layout');
+  },
+
+  get : function(req, res) {
+
+    Item.find({}, function(err, doc) {
+
+      res.send(doc);
+    });
+  },
+
+  create : function(req, res) {
+
+    console.log('THIS IS THE BODY ' + req.body);
+
+    var item = new Item(req.body);
+
+    console.log('THIS IS THE ITEM : ' + item);
+
+    item.save(function(err, doc) {
+      if (err) {
+
+        console.log(err)
+        
+      } else {
+        
+        res.send(doc);
+      }
+    });
   }
 };
 

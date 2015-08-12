@@ -5,19 +5,16 @@
 
 var store = angular.module('store', ['ngResource', 'ngRoute']);
 
-//============================== admin ==============================//
+//============================== routing ==============================//
 
 store.config(function($routeProvider) {
 
   $routeProvider
-
-  //============================== customer routing ==============================//
-          
     .when('/', {
       templateUrl : '/templates/custhome',
       controller  : 'home'
-    }).
-    when('/about', {
+    })
+    .when('/about', {
       templateUrl : '/templates/custabout',
       controller  : 'about'
     })
@@ -32,10 +29,7 @@ store.config(function($routeProvider) {
     .when('/shop', {
       templateUrl : '/templates/custshop',
       controller  : 'shop'
-    })
-
-    //============================== admin routing ==============================//
-            
+    })   
     .when('/admin', {
       templateUrl : '/templates/adminhome',
       controller  : 'adminHome'
@@ -49,7 +43,8 @@ store.config(function($routeProvider) {
       controller  : 'adminShop'
     })
     .when('/admin/history', {
-      templateUrl : '/templates/adminhistory'
+      templateUrl : '/templates/adminhistory',
+      controller  : 'adminHistory'
     })
 });
 
@@ -70,10 +65,77 @@ store.controller('home', function($scope) {
                         /* ~~~ admin facing controllers ~~~ */ 
 //===========================================================================//
 
+
+//============================== home ==============================//
+        
 store.controller('adminHome', function($scope) {
 
   console.log('I AM THE ADMIN CONTROLLER');
 });
+
+//===========================================================================//
+                        /* ~~~ admin shop view ~~~ */ 
+//===========================================================================//
+
+  //============================== Item Factory ==============================//
+          
+  store.factory('itemFactory', function($resource) {
+
+    var model = $resource('/admin/addItem/:id', {id : '@_id'} );
+
+      return {
+        model   : model,
+        items   : model.query()
+      }
+  });
+
+  //============================== shopController ==============================//
+          
+  store.controller('adminShop', function($scope, itemFactory) {
+
+    console.log("Here's your shop! | " + itemFactory.model);
+
+    $scope.showForm = false;
+
+    $scope.toggleForm = function() {
+
+      $scope.showForm = !$scope.showForm
+    }
+
+    $scope.addItem = function() {
+
+      var newItem = new itemFactory.model(this.newItem);
+
+      newItem.forSale = false;
+
+      newItem.$save( function(returned) {
+
+        itemFactory.items.push(returned);
+      });
+
+      this.newItem = {};
+    }
+  });
+    
+    //============================== addItem Controller ==============================//
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

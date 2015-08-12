@@ -4,6 +4,8 @@ html(lang='en', ng-app='store')
     meta(charset="utf-8")
     title Untitled
     link(rel="stylesheet", type="text/css", href="navbar/css/normalize.css")
+    link(rel="stylesheet", href="bootstrap/css/bootstrap-theme.css")
+    link(rel="stylesheet", href="bootstrap/css/bootstrap.css")
     link(href='http://fonts.googleapis.com/css?family=Rye', rel='stylesheet', type='text/css')
     link(rel="stylesheet", href="navbar/css/component.css")
     link(rel="stylesheet", href="navbar/css/demo.css")
@@ -31,10 +33,10 @@ html(lang='en', ng-app='store')
 
       div(class='st-pusher')
 
-          div(class="st-trigger-effects")
-            hr(class='line-break')
-            button(data-effect="st-effect-11" class='let-it-breathe menu-tog-btn') Show the Menu!
-            hr(class='line-break')
+          div(class="menu-top clearfix")
+            div(class="st-trigger-effects")
+              button(data-effect="st-effect-11" class='menu-tog-btn') 
+                span(class='menu-icon') &#9816; Menu 
         
 
           div(ng-view)

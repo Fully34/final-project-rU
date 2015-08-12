@@ -21,6 +21,7 @@
   .main-container {
     text-align: center;
   }
+
   .landing-border-accent {
       border-right: 2px solid #CCDDE4;
       border-left: 2px solid #CCDDE4;
@@ -117,6 +118,39 @@
     margin: 10px;
     padding: 20px;
   }
+
+  .float-left {
+    float: left;
+  }
+
+button {
+  color: #6D0000;
+  background-color: #E1E3BC;
+  border: 2px solid #6D0000;
+}
+
+button:hover .menu-icon {
+  border-top: 2px solid #E4E4BC;
+  border-bottom: 2px solid #E4E4BC;
+}
+/*===========================================================================*/
+                        /* ~~~ custom menu bar ~~~ */ 
+/*===========================================================================*/
+
+.menu-top { 
+  background-color: #E1E3BC;
+  max-width: 1200px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.menu-icon {
+  display: inline-block;
+  padding : 5px;
+  border-top: 2px solid #6D0000;
+  border-bottom: 2px solid #6D0000;
+}
+
 /*===========================================================================*/
                         /* ~~~ landing page (cust) ~~~ */ 
 /*===========================================================================*/
@@ -134,11 +168,34 @@
     /*height: 4000px;*/
   }
 
+/*===========================================================================*/
+                        /* ~~~ shop (ADMIN) ~~~ */ 
+/*===========================================================================*/
 
+.add-form-container {
+  border: 2px dashed #6C0900;
+  border-radius: 10px;
+  background-color: #E4E4BC;
+  color: #6C0900;
+  padding: 2em;
+  margin: 2em;
+  text-align: left;
+  width: 60%;
+}
 
+.field {
+  border-radius: 5px;
+  border: 1px solid #6C0900;
+  display: block;
+  font-family: 'Lato', sans-serif;
+  margin: 1.5em;
+  padding: 0.2em;
+}
 
-
-
+.textarea {
+  height: 10vh;
+  width: 90%;
+}
 
 
 
