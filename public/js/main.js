@@ -58,49 +58,83 @@ store.config(function($routeProvider) {
 
 //============================== nav Controller ==============================//
 
-store.controller('nav', function($scope, $http, $location) {
+store.controller('nav', function($scope, $http, $location, $rootScope) {
 
-  $http.get('/api/me')
-    .then(function(res) {
+  console.log('nav Controller'); 
 
-      console.log(res);
+  $rootScope.$watch($rootScope.adminLoggedIn, function() {
 
-      if(res.data) {
+    console.log('Changed');
 
-        $scope.navElements = {
+    if ($rootScope.adminLoggedIn) {
 
-          home      : '/#/admin',
-          homeName  : 'Home',
-          queue     : '/#/admin/queue',
-          queueName : 'Queue',
-          shopItems : '/#/admin/shop',
-          shopIName : 'Shop Items',
-          custShop  : '/#/shop',
-          custSName : 'Customer Shop View',
-          history   : '/#/admin/history', 
-          histName  : 'History'
+      console.log(' ROOT SCOPE!!! | ', $rootScope.adminLoggedIn);
 
-        console.log($scope.navElements);
+      $scope.admin = $rootScope.adminLoggedIn;
 
-      } else {
+      $scope.adminElements = [
 
-        $scope.navElements = {
-
-          home       : '/#/',
-          homeName   : 'Home'
-          about      : '/#/about',
-          aboutName  : 'About',
-          queue      : '/#/queue',
-          queueName  : 'Queue',
-          portfolio  : '/#/portfolio',
-          portName   : 'Portfolio',
-          shop       : '/#/shop',
-          shopName   : 'Shop'
+        {
+          route : '/#/admin',
+          name  : 'Home'
+        },
+        {
+          route : '/#/admin/queue',
+          name  : 'Queue'
+        },
+        {
+          route : '/#/admin',
+          name  : 'Home'
+        },
+        {
+          route : '/#/admin/shop',
+          name  : 'Shop Items'
+        },
+        {
+          route : '/#/shop',
+          name  : 'Customer Shop',
+        },
+        {
+          route : '/#/admin/history', 
+          name  : 'History'
+        },
+        {
+          route : '/logout',
+          name  : 'Logout'
         }
+      ] 
 
-        console.log($scope.navElements);
-      }
-    });
+      console.log($scope.adminElements);
+      
+    } else {
+
+      $scope.custElements = [
+
+        {
+          route : '/#/',
+          name  : 'Home'
+        },
+        {
+          route : '/#/about',
+          name  : 'About'
+        },
+        {
+          route : '/#/queue',
+          name  : 'Queue'
+        },
+        {
+          route : '/#/portfolio',
+          name  : 'Portfolio',
+        },{
+          route : '/#/shop',
+          name  : 'Shop'
+        },
+      ]
+
+      console.log('CURRENT NAV ELEMENTS | ', $scope.custElements);  
+    
+    }
+  });
 });
 
   //============================== Item Factory ==============================//
@@ -178,14 +212,14 @@ store.controller('adminHome', function($scope, $http, $location) {
   $http.get('/api/me')
     .then(function(res) {
 
-      console.log(res.data);
+      // console.log(res.data);
 
       if(!res.data) { 
 
         $location.url('/admin/login')
       }
     }); 
-  console.log('I AM THE ADMIN CONTROLLER');
+  // console.log('I AM THE ADMIN CONTROLLER');
 });
 
 //===========================================================================//
@@ -268,16 +302,23 @@ store.controller('adminHome', function($scope, $http, $location) {
     
     //============================== login Controller ==============================//
     
-    store.controller('login', function($scope, $http, $location) {
+
+    store.controller('login', function($scope, $http, $location, $rootScope) {
+
+      $rootScope.adminLoggedIn = null;
 
       $scope.login = function() {
-
+        
         $http.post('/login', $scope.admin)
           .then( function(res) {
 
             if(!res.data.err) {
 
               $location.url('/admin');
+
+              $rootScope.adminLoggedIn = true;
+
+              console.log($rootScope.adminLoggedIn);
 
             } else {
 
@@ -287,6 +328,7 @@ store.controller('adminHome', function($scope, $http, $location) {
       };
     });
 
+            
 //============================== admin history controller ==============================//
 
 store.controller('adminHistory', function($scope, $http, $location) {
@@ -320,11 +362,6 @@ store.controller('adminQueue', function($scope, $http, $location) {
 
   console.log('QUEUE CONTROLLER');
 });
-
-//============================== admin ==============================//
-
-        
-
 
 
 

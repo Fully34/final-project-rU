@@ -17,12 +17,15 @@ html(lang='en', ng-app='store')
     div(id='st-container',class='st-container st-effect-11')
       nav(class='st-menu st-effect-11', id='menu-11', ng-controller='nav') 
         h2(class="icon icon-key") Menu!
-        ul(ng-repeat='element in navElements')
-          li
-            a(class="icon icon-location", ng-href="{{navElements.home}}") Home
+        ul(ng-if='admin')
+          li(ng-repeat='element in adminElements')
+            a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
+
+        ul(ng-if='!admin')
+          li(ng-repeat='element in custElements')
+            a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
 
       div(class='st-pusher')
-
           div(class="menu-top clearfix")
             div(class="st-trigger-effects")
               button(data-effect="st-effect-11" class='menu-tog-btn') 

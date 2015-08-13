@@ -6,11 +6,18 @@
       left: 10px;
   }
 
+  
+  /*==============================  temporary  =============================*/
+  #st-container {
+    min-height: 500px;
+  }
+          
   body {
       background-color: #C56615;
       /*height: 5000px;*/
       font-family: "Rye", sans-serif;
       text-align: center;
+      min-height: 500px;
   }
 
   .big-wrapper {
