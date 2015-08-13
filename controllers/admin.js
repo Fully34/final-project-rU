@@ -72,11 +72,11 @@ var adminController = {
       if (err) {
 
         res.send('NOPE ', err);
+
       } else {
 
-        res.send(_id)
+        res.send(_id);
       }
-
     });
   }
 };

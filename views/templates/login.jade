@@ -1,0 +1,10 @@
+div(class='container big-wrapper main-container clearfix')
+  div(class='positioning-div')
+    div(class='login-form-container')
+      form(ng-submit='login()')
+        label(for='name') Name:
+        input(class='field', type='text', name='name', ng-model='admin.username')
+        label(for='password') Password:
+        input(class='field', type="password", name='password', ng-model='admin.password')
+        input(class='submit-btn', type='submit')
+        p {{err}}

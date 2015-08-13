@@ -15,19 +15,11 @@ html(lang='en', ng-app='store')
     
     //- navbar originally created by Mary Lou (http://tympanus.net/codrops/author/crnacura/), she's awesome
     div(id='st-container',class='st-container st-effect-11')
-      nav(class='st-menu st-effect-11', id='menu-11') 
+      nav(class='st-menu st-effect-11', id='menu-11', ng-controller='nav') 
         h2(class="icon icon-key") Menu!
-        ul
+        ul(ng-repeat='element in navElements')
           li
-            a(class="icon icon-location", ng-href="/#/") Home
-          li 
-            a(class="icon icon-fire", ng-href="/#/about") About  
-          li
-            a(class="icon icon-note", ng-href='/#/queue') Queue
-          li
-            a(class="icon icon-stack", ng-href="/#/portfolio") Portfolio
-          li
-            a(class="icon icon-cloud", ng-href="/#/shop") Shop
+            a(class="icon icon-location", ng-href="{{navElements.home}}") Home
 
       div(class='st-pusher')
 
