@@ -45,8 +45,18 @@
       z-index: -10;
   }
 
+  .cart-btn {
+    position: absolute;
+    top: 15px;
+    right: 48%;
+  }
+
   .queue-font {
       color: #CCDDE4;
+  }
+
+  .block {
+    display: block;
   }
 
   .clearfix {
@@ -227,6 +237,10 @@ button:hover .menu-icon {
   width: 200px;
 }
 
+.purchase-form-container {
+
+  
+}
 
 /*===========================================================================*/
                         /* ~~~ login ~~~ */ 

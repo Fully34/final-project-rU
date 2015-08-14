@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "angular-payments": "^1.0.7",
     "bcrypt": "^0.8.4",
     "body-parser": "^1",
     "connect-flash": "^0.1.1",

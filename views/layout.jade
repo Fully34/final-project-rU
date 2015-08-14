@@ -10,35 +10,64 @@ html(lang='en', ng-app='store')
     link(rel="stylesheet", href="navbar/css/icons.css")
     link(rel='stylesheet', type='text/css', href='css/main.css')
     script(src="navbar/js/modernizr.custom.js")
+    script(type='text/javascript', src='https://checkout.stripe.com/checkout.js')
 
   body
-    
     //- navbar originally created by Mary Lou (http://tympanus.net/codrops/author/crnacura/), she's awesome
-    div(id='st-container',class='st-container st-effect-11')
-      nav(class='st-menu st-effect-11', id='menu-11', ng-controller='nav') 
-        h2(class="icon icon-key") Menu!
-        ul(ng-if='admin')
-          li(ng-repeat='element in adminElements')
-            a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
+  div(id='st-container',class='st-container st-effect-11')
+    nav(class='st-menu st-effect-11', id='menu-11', ng-controller='nav') 
+      h2(class="icon icon-key") Menu!
+      //- ul(ng-if='!adminLoggedIn')
+      //-   li(ng-repeat='element in customerElements')
+      //-     a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
 
-        ul(ng-if='!admin')
-          li(ng-repeat='element in custElements')
-            a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
-
-      div(class='st-pusher')
-          div(class="menu-top clearfix")
-            div(class="st-trigger-effects")
-              button(data-effect="st-effect-11" class='menu-tog-btn') 
-                span(class='menu-icon') &#9816; Menu 
+      //- ul(ng-if='adminLoggedIn')
+      //-   li(ng-repeat='element in adminElements')
+      //-     a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
+      ul
+        li
+          a(class="icon icon-location", ng-href="{{navElements.home}}", ng-if='navElements.home') {{navElements.homeName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.queue}}", ng-if='navElements.queue') {{navElements.queueName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.shopItems}}", ng-if='navElements.shopItems') {{navElements.shopIName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.custShop}}", ng-if='navElements.custShop') {{navElements.custSName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.history}}", ng-if='navElements.history') {{navElements.histName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.about}}", ng-if='navElements.about') {{navElements.aboutName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.portfolio}}", ng-if='navElements.portfolio') {{navElements.portName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.shop}}", ng-if='navElements.shop') {{navElements.shopName}}
+        li
+          a(class="icon icon-location", ng-href="{{navElements.logout}}", ng-if='navElements.logout') {{navElements.logoutName}}
         
 
-          div(ng-view)
+    div(class='st-pusher')
+      div(class="menu-top clearfix")
+        div(class="st-trigger-effects")
+          button(data-effect="st-effect-11" class='menu-tog-btn') 
+            span(class='menu-icon') &#9816; Menu 
 
+      div(ng-view)
 
+    //- angular and Stripe
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular.min.js')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-route.js')
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.3/angular-resource.js')
+    script(type="text/javascript", src="https://js.stripe.com/v2/")
+
+    //- angular payments
+    script(src="http://cdn.rawgit.com/laurihy/angular-payments/2472bc9befa256780d106a8e53a9dea12b7341ed/lib/angular-payments.js")
+    
+    //- navbar shenanigans
     script(type='text/javascript', src="navbar/js/classie.js")
     script(type='text/javascript', src="navbar/js/sidebarEffects.js")
+
+    //- underscore
     script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js')
+
+    //- Main.js
     script(type='text/javascript', src='js/main.js')

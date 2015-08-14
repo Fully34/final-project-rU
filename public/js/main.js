@@ -16,7 +16,7 @@ store.config(function($routeProvider) {
     })
     .when('/about', {
       templateUrl : '/templates/custabout',
-      controller  : 'about'
+      controller  : 'home'
     })
     .when('/queue', {
       templateUrl : '/templates/custqueue',
@@ -24,7 +24,7 @@ store.config(function($routeProvider) {
     })
     .when('/portfolio', {
       templateUrl : '/templates/custportfolio',
-      controller  : 'portfolio'
+      controller  : 'home'
     })
     .when('/shop', {
       templateUrl : '/templates/custshop',
@@ -54,86 +54,58 @@ store.config(function($routeProvider) {
       templateUrl : '/templates/adminhistory',
       controller  : 'adminHistory'
     })
+    .otherwise({
+      redirectTo : '/'
+    })
 });
 
 //============================== nav Controller ==============================//
 
 store.controller('nav', function($scope, $http, $location, $rootScope) {
 
-  console.log('nav Controller'); 
+  $http.get('/api/me')
+    .then(function(res) {
 
-  $rootScope.$watch($rootScope.adminLoggedIn, function() {
+      // console.log(res);
+       if(res.data) {
 
-    console.log('Changed');
+        $scope.navElements = {
 
-    if ($rootScope.adminLoggedIn) {
+          home      : '/#/admin',
+          homeName  : 'Home',
+          queue     : '/#/admin/queue',
+          queueName : 'Queue',
+          shopItems : '/#/admin/shop',
+          shopIName : 'Shop Items',
+          custShop  : '/#/shop',
+          custSName : 'Customer Shop View',
+          history   : '/#/admin/history', 
+          histName  : 'History',
+          logout    : '/logout',
+          logoutName: 'Log Out'
 
-      console.log(' ROOT SCOPE!!! | ', $rootScope.adminLoggedIn);
-
-      $scope.admin = $rootScope.adminLoggedIn;
-
-      $scope.adminElements = [
-
-        {
-          route : '/#/admin',
-          name  : 'Home'
-        },
-        {
-          route : '/#/admin/queue',
-          name  : 'Queue'
-        },
-        {
-          route : '/#/admin',
-          name  : 'Home'
-        },
-        {
-          route : '/#/admin/shop',
-          name  : 'Shop Items'
-        },
-        {
-          route : '/#/shop',
-          name  : 'Customer Shop',
-        },
-        {
-          route : '/#/admin/history', 
-          name  : 'History'
-        },
-        {
-          route : '/logout',
-          name  : 'Logout'
         }
-      ] 
 
-      console.log($scope.adminElements);
-      
-    } else {
+        // console.log($scope.navElements);
 
-      $scope.custElements = [
+      } else {
 
-        {
-          route : '/#/',
-          name  : 'Home'
-        },
-        {
-          route : '/#/about',
-          name  : 'About'
-        },
-        {
-          route : '/#/queue',
-          name  : 'Queue'
-        },
-        {
-          route : '/#/portfolio',
-          name  : 'Portfolio',
-        },{
-          route : '/#/shop',
-          name  : 'Shop'
-        },
-      ]
+        $scope.navElements = {
 
-      console.log('CURRENT NAV ELEMENTS | ', $scope.custElements);  
-    
-    }
+          home       : '/#/',
+          homeName   : 'Home',
+          about      : '/#/about',
+          aboutName  : 'About',
+          queue      : '/#/queue',
+          queueName  : 'Queue',
+          portfolio  : '/#/portfolio',
+          portName   : 'Portfolio',
+          shop       : '/#/shop',
+          shopName   : 'Shop'
+        }
+
+        // console.log($scope.navElements);
+      }
   });
 });
 
@@ -158,7 +130,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
   
   //============================== home controller ==============================//
           
-  store.controller('home', function($scope) {
+  store.controller('home', function($scope, $rootScope) {
 
     $scope.menu = function() {
 
@@ -169,13 +141,32 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
   //============================== shop controller ==============================//
 
-  store.controller('shop', function($scope, itemFactory) {
+  store.controller('shop', function($scope, itemFactory, $rootScope) {
 
     $scope.items = itemFactory.items;
 
-    var addToCart = function(item) {
+    //> state variable for the showing and hiding of the form
+    $scope.currentItemForm = null;
 
-      //> Come back and do this after research
+    //> Show/hide add to car functionality
+    $scope.showForm= function(itemName) {
+
+      $scope.currentItemForm = itemName;
+    };
+
+    //> COME BACK AND DEAL WITH PAGE REFRESH
+    $rootScope.currentTotal = $rootScope.currentTotal || 0;
+    $rootScope.currentCart = $rootScope.currentCart || [];
+
+    $scope.addToCart = function(item, quantity) {
+
+      //> 
+      $scope.total = parseInt(quantity, 10) * item.price
+
+      console.log($scope.total);
+      $rootScope.currentTotal += $scope.total;
+
+      console.log($rootScope.currentTotal);
     }
   });
 
@@ -207,7 +198,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
 //============================== home ==============================//
         
-store.controller('adminHome', function($scope, $http, $location) {
+store.controller('adminHome', function($scope, $http, $location, $rootScope) {
 
   $http.get('/api/me')
     .then(function(res) {
@@ -219,6 +210,7 @@ store.controller('adminHome', function($scope, $http, $location) {
         $location.url('/admin/login')
       }
     }); 
+
   // console.log('I AM THE ADMIN CONTROLLER');
 });
 
@@ -305,10 +297,59 @@ store.controller('adminHome', function($scope, $http, $location) {
 
     store.controller('login', function($scope, $http, $location, $rootScope) {
 
-      $rootScope.adminLoggedIn = null;
+      $scope.adminLoggedIn = false;
+
+      //> WANT TO GET THIS WORKING AT SOME PONT
+      // $scope.customerElements = [
+
+      //   {
+      //     name: 'Home',
+      //     route: '/#/'
+      //   },
+      //   {
+      //     name: 'About',
+      //     route: '/#/about'
+      //   },
+      //   {
+      //     name: 'Queue',
+      //     route: '/#/queue'
+      //   },
+      //   {
+      //     name: 'Portfolio',
+      //     route: '/#/portfolio'
+      //   },
+      //   {
+      //     name: 'Shop',
+      //     route: '/#/shop'
+      //   }
+      // ];
+
+      // $scope.adminElements = [
+
+      //   {
+      //     name: 'Home',
+      //     route: '/#/admin'
+      //   },
+      //   {
+      //     name: 'Queue',
+      //     route: '/#/admin/queue'
+      //   },
+      //   {
+      //     name: 'Shop Items',
+      //     route: '/#/admin/shop'
+      //   },
+      //   {
+      //     name: 'Customer Shop View',
+      //     route: '/#/shop'
+      //   },
+      //   {
+      //     name: 'History',
+      //     route: '/#/admin/history'
+      //   }
+      // ];
 
       $scope.login = function() {
-        
+
         $http.post('/login', $scope.admin)
           .then( function(res) {
 
@@ -316,13 +357,14 @@ store.controller('adminHome', function($scope, $http, $location) {
 
               $location.url('/admin');
 
-              $rootScope.adminLoggedIn = true;
+              $scope.adminLoggedIn = true;
 
-              console.log($rootScope.adminLoggedIn);
+              console.log($scope.adminLoggedIn);
 
             } else {
 
               $scope.err = res.data.err;
+
             }
           })
       };
@@ -337,9 +379,9 @@ store.controller('adminHistory', function($scope, $http, $location) {
     .then(function(res) {
 
       console.log(res.data);
-      if(!res.data) { 
+      if(!res.data) {
 
-        $location.url('/admin/login')
+        $location.url('/admin/login');
       }
     }); 
 
