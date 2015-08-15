@@ -1,0 +1,11 @@
+
+
+div
+  h1 Checkout Page
+  ul
+    li(ng-repeat='item in currentCart')
+      p Item : {{item.item.name}}
+      p Quantity : {{item.quantity}}
+      p Price per item : {{item.item.price}}
+
+    li Current Total Price : {{currentTotal}}

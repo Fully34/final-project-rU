@@ -148,7 +148,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
     //> state variable for the showing and hiding of the form
     $scope.currentItemForm = null;
 
-    //> Show/hide add to car functionality
+    //> Show/hide add to cart functionality
     $scope.showForm= function(itemName) {
 
       $scope.currentItemForm = itemName;
@@ -158,17 +158,69 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
     $rootScope.currentTotal = $rootScope.currentTotal || 0;
     $rootScope.currentCart = $rootScope.currentCart || [];
 
+    //> create cart button and cart in memory
     $scope.addToCart = function(item, quantity) {
 
-      //> 
+      //> price logic for multiple items for cart button
       $scope.total = parseInt(quantity, 10) * item.price
 
-      console.log($scope.total);
+      //> price logic for running total
       $rootScope.currentTotal += $scope.total;
 
-      console.log($rootScope.currentTotal);
+      //> find the item in the cart?
+      var currentCart = $rootScope.currentCart;
+
+      //> Check the cart by item _id
+      var contained = $scope.beenOrdered( item ); //> returns t/f
+
+      //> if the object is contained in the array, need to return a reference to the object so I can update the quantity prop
+
+      //> if the array doesn't have the item, push it to the array
+      if (contained === -1) {
+
+        //> store the item and quantity so we can display a cart later
+        $rootScope.currentCart.push({
+
+          item       : item, 
+          quantity   : quantity,
+          totalPrice : $scope.total
+        });
+
+      } else {
+
+        $scope.message = 'You already have this item in your cart!'
+        console.log($scope.message);
+      };
+
+      console.log($rootScope.currentCart);
     }
+
+    //> remove the add to cart button when they add something to the cart
+    $scope.showme = true;
+    // console.log($scope.showme)
+
+    //> Check if something has been ordered //> returns t/f for ng-if
+    $scope.beenOrdered = function( item ) {
+
+      return $rootScope.currentCart.map(function(e) {
+
+        return e.item._id;
+
+      }).indexOf(item._id);
+    };
+
+
   });
+
+
+//===========================================================================//
+                        /* ~~~ customer checkout ~~~ */ 
+//===========================================================================//
+
+store.controller('checkout', function($scope, $rootScope) {
+
+
+});
 
   //============================== about controller ==============================//
 
