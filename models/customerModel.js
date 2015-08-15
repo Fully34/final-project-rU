@@ -11,7 +11,20 @@ var Customer = mongoose.model('Customer', {
   name        : {type : String},
   product_id  : {type : String},
   orderNum    : {type : String},
-  address     : {type : String},
+  billAddress : {
+    street1 : {type : String},
+    street2 : {type : String},
+    city    : {type : String},
+    state   : {type : String},
+    zip     : {type : Number}
+  },
+  shipAddress : {
+    street1 : {type : String},
+    street2 : {type : String},
+    city    : {type : String},
+    state   : {type : String},
+    zip     : {type : Number}
+  },
   phoneNumber : {type : String},
   email       : {type : String},
   paid        : {type : Boolean},

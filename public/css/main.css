@@ -262,6 +262,84 @@ button:hover .menu-icon {
 
   text-align: left;
 }
+
+/*===========================================================================*/
+                        /* ~~~ checkout page~~~ */ 
+/*===========================================================================*/
+
+.content-container {
+  min-width: 830px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.checkout-item-detail {
+  display: inline-block;
+  padding: 0 1.2em;
+  width: 20%;
+}
+.checkout-item {
+  display: inline-block;
+  border: 2px solid black;
+}
+
+.table-container {
+  text-align: center;
+}
+
+.table-row {
+  width: 80%;
+}
+
+.table-headers {
+  width: 25%;
+}
+.cart-list {
+  border: 2px solid black;
+  /*BORDER RADIUS NOT WORKING FOR SOME REASON*/
+  margin: 0 auto;
+  min-width: 830px;
+  max-width: 1200px;
+  width: 80%;
+}
+
+.tbl-item-detail {
+  border: 1px solid black;
+  padding: 1em;
+  position: relative;
+}
+
+.total-container {
+  margin: 0 auto;
+  padding: 1em;
+  position: relative;
+  width: 80%;
+  text-align: right;
+}
+
+.remove-btn {
+  font-size: 0.4em;
+  margin-bottom: -0.2em;
+}
+.bill-form-container {
+  margin: 0 auto;
+  width: 80%;
+  text-align: left;
+}
+
+.bill-form-label {
+  display: inline-block;
+  padding: 0.3em;
+}
+
+.bill-form-els {
+  display: block;
+  padding: 0.5em;
+}
+
+.bill-form-state {
+  display: block;
+  padding: 0.5em;
+}
 /*===========================================================================*/
                         /* ~~~ media queries ~~~ */ 
 /*===========================================================================*/

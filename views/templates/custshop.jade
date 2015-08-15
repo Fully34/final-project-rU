@@ -11,7 +11,7 @@ div(class='container big-wrapper main-container clearfix')
     img(class='shop-img' ng-src="{{item.image}}", alt="image")
     p Description: {{item.description}}
     p Price: {{item.price}}
-    button(ng-click='showForm( item.name )', ng-show='beenOrdered( item ) === -1') BUY IT NOW!
+    button(ng-click='showForm( item.name, item, 1 )', ng-show='beenOrdered( item ) === -1') BUY IT NOW!
 
     div(id='item.name', class='purchase-form-container', ng-if='currentItemForm === item.name')
       form(class='purchase-form', ng-submit='addToCart( item, howMany )')
@@ -21,3 +21,5 @@ div(class='container big-wrapper main-container clearfix')
           button(type='submit', ng-click='showme = false') Add to cart!
           button(ng-click='showForm(null)', ng-show='showme') LOL JK!
     span(ng-hide='beenOrdered( item ) === -1') Currently in your cart
+
+    //- button(ng-click='logCart()') log the cart

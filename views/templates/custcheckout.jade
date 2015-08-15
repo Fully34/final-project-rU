@@ -1,11 +1,63 @@
-
-
-div
+div(class='content-container')
   h1 Checkout Page
-  ul
-    li(ng-repeat='item in currentCart')
-      p Item : {{item.item.name}}
-      p Quantity : {{item.quantity}}
-      p Price per item : {{item.item.price}}
+  div(class='table-container')
+    table(class='cart-list')
+      tr(class='table-row')
+        th(class='table-headers')
+          h2 Item
+        th(class='table-headers')
+          h2 Price
+        th(class='table-headers')
+          h2 Quantity
+        th(class='table-headers')
+          h2 Item Total
+      tr(class='table-row', ng-repeat='item in currentCart')
+        td(class='tbl-item-detail') {{item.item.name}}
+        td(class='tbl-item-detail') ${{item.item.price}}.00
+        td(class='tbl-item-detail') {{item.quantity}}
+        td(class='tbl-item-detail') ${{item.item.price * item.quantity}}.00
+          button(class='remove-btn', ng-click='removeItem( item.item )', ng-show='!showCheckoutForm') Remove from cart
 
-    li Current Total Price : {{currentTotal}}
+  div(class='total-container')
+    h2 Current Total Price : ${{currentTotal}}.00
+    h4(ng-show='!showCheckoutForm', ng-hide='currentCart.length === 0') Continue Checkout with Stripe
+    button(class='stripe-checkout', ng-click='showCheckoutForm = true', ng-hide='currentCart.length === 0', ng-show='!showCheckoutForm') Continue
+    button(class='stripe-checkout', ng-click='showCheckoutForm = false', ng-show='showCheckoutForm') Cancel
+    a(ng-href='/#/', ng-show='currentCart.length === 0') 
+      button Take me home!
+
+  div(class='bill-form-container', ng-if='showCheckoutForm')
+    form(ng-submit='addCustomer( customer )')
+      label(class='bill-form-label') Name: 
+      input(class='bill-form-els', type="text", ng-model='customer.name')
+      label(class='bill-form-label') E-mail Address: 
+      input(class='bill-form-els', type="text", ng-model='customer.emailAddress')
+      hr
+      label(class='bill-form-label') Billing Address 1:
+      input(class='bill-form-els', type="text", ng-model='customer.billingAddress')
+      label(class='bill-form-label') Billing Address 2:
+      input(class='bill-form-els', type="text", ng-model='customer.billingAddress')
+      label(class='bill-form-label') City:
+      input(class='bill-form-els', type="text", ng-model='customer.city')
+      label(class='bill-form-label') State:
+      input(class='bill-form-state', size='2', type="text", ng-model='customer.state')
+      label(class='bill-form-label') Zip-Code:
+      input(class='bill-form-els', type="text", ng-model='customer.zip')
+
+      button(class='bill-form-els', type='submit') Continue
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

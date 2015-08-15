@@ -32,7 +32,7 @@ store.config(function($routeProvider) {
     })
     .when('/checkout', {
       templateUrl : '/templates/custcheckout',
-      controller  : 'checkout'
+      controller  : 'shop'
     })
     .when('/admin/login', {
       templateUrl : '/templates/login',
@@ -149,9 +149,12 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
     $scope.currentItemForm = null;
 
     //> Show/hide add to cart functionality
-    $scope.showForm= function(itemName) {
+    $scope.showForm= function(itemName, item, quantity) {
 
       $scope.currentItemForm = itemName;
+
+      console.log(item, quantity)
+      $scope.addToCart( item, quantity);
     };
 
     //> COME BACK AND DEAL WITH PAGE REFRESH
@@ -171,11 +174,10 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       var currentCart = $rootScope.currentCart;
 
       //> Check the cart by item _id
-      var contained = $scope.beenOrdered( item ); //> returns t/f
+      var contained = $scope.beenOrdered( item ); //> returns -1/index#
 
-      //> if the object is contained in the array, need to return a reference to the object so I can update the quantity prop
-
-      //> if the array doesn't have the item, push it to the array
+      // > if the array doesn't have the item, push it to the array
+        //> this will be on the buy it now click
       if (contained === -1) {
 
         //> store the item and quantity so we can display a cart later
@@ -186,17 +188,25 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
           totalPrice : $scope.total
         });
 
+      //> this will be on the add to cart click
       } else {
 
-        $scope.message = 'You already have this item in your cart!'
-        console.log($scope.message);
-      };
+        //> update quantity of item in cart
+        for (var i = 0; i < $rootScope.currentCart.length; i++) {
 
-      console.log($rootScope.currentCart);
-    }
+          if (item._id === currentCart[i].item._id ){
+
+            currentCart[i].quantity = quantity;
+
+            $rootScope.currentTotal = (item.price * $rootScope.currentCart[i].quantity);
+          }
+        };
+      };
+    };//> end addToCart()
 
     //> remove the add to cart button when they add something to the cart
     $scope.showme = true;
+
     // console.log($scope.showme)
 
     //> Check if something has been ordered //> returns t/f for ng-if
@@ -208,8 +218,39 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
       }).indexOf(item._id);
     };
+  
+    //> remove item from cart at checkout screen
+    $scope.removeItem = function( item ) {
 
+      console.log(item);
+      var cart = $rootScope.currentCart;
 
+      for (var i = 0; i < cart.length; i++) {
+
+        console.log(cart);
+        console.log(item);
+
+        if (item._id === cart[i].item._id) {
+
+          console.log(cart)
+          //> need to decrement the total as well:
+            //> needs to happen before we splice out of the cart
+          $rootScope.currentTotal -= (item.price * cart[i].quantity);
+
+          //> Splice the item out of the cart
+          cart.splice(i, 1);
+
+          break;
+        }
+      }
+    };
+
+    $scope.showCheckoutForm = false;
+
+    $scope.logCart = function() {
+
+      console.log($scope.currentCart)
+    }
   });
 
 
