@@ -238,21 +238,69 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
       }).indexOf(item._id);
     };
-  
-    //> remove item from cart at checkout screen
+  });
+
+
+//===========================================================================//
+                        /* ~~~ customer checkout ~~~ */ 
+//===========================================================================//
+
+  //============================== queue controller ==============================//
+
+  store.controller('queue', function($scope, $rootScope, $http, $location, customerFactory) {
+
+    console.log('QUEUE CONTROLLER');
+
+    //> customer array from db
+    $scope.customers = customerFactory.customers;
+
+    //> add customer to db
+    $scope.addCustomer = function(  ) {
+
+      //> model the customer based on the form data
+      var newCustomer = new customerFactory.model(this.newCustomer);
+
+      //> add the order array to the customer
+      newCustomer.order = $rootScope.currentCart;
+
+      //> Save the customer to the backend
+      newCustomer.$save(function(returned) {
+
+        //> keep front end customer array up to date with any updates
+        if (returned.order) {
+
+          console.log('good order');
+          $scope.customers.push(returned);
+
+          //> reset my cart and total on good order
+          $rootScope.currentCart = [];
+
+          $rootScope.currentTotal = 0;
+        };
+      });
+      
+      //> reset form fields      
+      this.newCustomer = {};
+
+
+      //> redirect to queue immediately
+      $location.url('/queue');
+    }
+
+        //> remove item from cart at checkout screen
     $scope.removeItem = function( item ) {
 
-      console.log(item);
       var cart = $rootScope.currentCart;
 
       for (var i = 0; i < cart.length; i++) {
 
-        console.log(cart);
-        console.log(item);
+        // console.log(cart);
+        // console.log(item);
 
         if (item._id === cart[i].item._id) {
 
-          console.log(cart)
+          // console.log(cart)
+
           //> need to decrement the total as well:
             //> needs to happen before we splice out of the cart
           $rootScope.currentTotal -= (item.price * cart[i].quantity);
@@ -270,36 +318,6 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
     $scope.logCart = function() {
 
       console.log($scope.currentCart)
-    }
-  });
-
-
-//===========================================================================//
-                        /* ~~~ customer checkout ~~~ */ 
-//===========================================================================//
-
-  //============================== queue controller ==============================//
-
-  store.controller('queue', function($scope, $rootScope, $http, $location, customerFactory) {
-
-    console.log('QUEUE CONTROLLER');
-
-    $scope.customers = customerFactory.customers;
-
-    $scope.addCustomer = function( customer ) {
-
-      customer.order = $rootScope.currentCart;
-
-      console.log(customer);
-
-      var newCustomer = new customerFactory.model(this.newCustomer)
-
-      newCustomer.$save(function(returned) {
-
-        $scope.customers.push(returned);
-      });     
-       
-      $location.url('/queue')
     }
   });
           

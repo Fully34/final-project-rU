@@ -259,7 +259,6 @@ button:hover .menu-icon {
 }
 
 .positioning-div {
-
   text-align: left;
 }
 
@@ -272,11 +271,13 @@ button:hover .menu-icon {
   max-width: 1200px;
   margin: 0 auto;
 }
+
 .checkout-item-detail {
   display: inline-block;
   padding: 0 1.2em;
   width: 20%;
 }
+
 .checkout-item {
   display: inline-block;
   border: 2px solid black;
@@ -293,7 +294,8 @@ button:hover .menu-icon {
 .table-headers {
   width: 25%;
 }
-.cart-list {
+
+.list {
   border: 2px solid black;
   /*BORDER RADIUS NOT WORKING FOR SOME REASON*/
   margin: 0 auto;
@@ -340,6 +342,7 @@ button:hover .menu-icon {
   display: block;
   padding: 0.5em;
 }
+
 /*===========================================================================*/
                         /* ~~~ media queries ~~~ */ 
 /*===========================================================================*/

@@ -22,7 +22,7 @@ var customerController = {
         console.log("NOPE! Error: ", err);
 
         res.send(null);
-        
+
       } else {
 
         res.send(doc);
@@ -32,13 +32,21 @@ var customerController = {
 
   create : function(req, res) {
 
+    if(!req.body.order) {
+
+      res.send("ERROR, You don't have an order!");
+    }
+
     var customer = new Customer(req.body);
+
+    console.log('CUSTOMER', customer);
 
     customer.save(function(err, doc) {
 
       if (err) {
 
-        console.log("NOPE! Error: ", err);
+        console.log("ERROR");
+        // console.log("NOPE! Error: ", err);
 
         res.send(null);
         
