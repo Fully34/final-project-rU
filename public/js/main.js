@@ -328,16 +328,16 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
     console.log('admin queue');
 
-    // $http.get('/api/me')
-    //   .then(function(res) {
+    $http.get('/api/me')
+      .then(function(res) {
 
-    //     // console.log(res.data);
+        // console.log(res.data);
 
-    //     if(!res.data) { 
+        if(!res.data) { 
 
-    //       $location.url('/admin/login')
-    //     };
-    //   });
+          $location.url('/admin/login')
+        };
+      });
 
     $scope.customers = customerFactory.customers;
 

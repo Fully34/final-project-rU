@@ -12,11 +12,10 @@ div(class='table-container')
         h2 Name:
       th(class='table-headers')
         h2 Shipped on:
-    tr(class='table-row', ng-repeat='customer in customers | limitTo : 5', ng-if='customer.shipped')
+    tr(class='table-row', ng-repeat='customer in customers | orderBy : "timeFrom" : true | limitTo : 5', ng-if='customer.shipped')
       td(class='tbl-item-detail') {{customer._id}}
       td(class='tbl-item-detail') {{customer.name}}
       td(class='tbl-item-detail') {{customer.dateShipped}}
-
 
 h1 On the stack
 div(class='table-container')
