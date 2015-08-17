@@ -278,7 +278,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
           $rootScope.currentTotal = 0;
         };
       });
-      
+
       //> reset form fields      
       this.newCustomer = {};
 
@@ -286,8 +286,9 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       //> redirect to queue immediately
       $location.url('/queue');
     }
-
-        //> remove item from cart at checkout screen
+//============================== checkout controls ==============================//
+        
+    //> remove item from cart at checkout screen
     $scope.removeItem = function( item ) {
 
       var cart = $rootScope.currentCart;
@@ -320,7 +321,59 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       console.log($scope.currentCart)
     }
   });
-          
+
+    //============================== ADMIN queue ==============================//
+
+  store.controller('adminQueue', function($scope, $rootScope, $http, $location, customerFactory) {
+
+    console.log('admin queue');
+
+    // $http.get('/api/me')
+    //   .then(function(res) {
+
+    //     // console.log(res.data);
+
+    //     if(!res.data) { 
+
+    //       $location.url('/admin/login')
+    //     };
+    //   });
+
+    $scope.customers = customerFactory.customers;
+
+    $scope.inProg = function(customer) {
+
+      customer.inProgress = true;
+
+      //> send request to backend to update the db customer
+      customer.$save();
+    };
+
+    $scope.completed = function(customer) {
+
+      customer.complete = true;
+
+      //> send request to backend to update the db customer
+      customer.$save();
+    };
+
+    $scope.shipped = function(customer) {
+
+      var time = moment().format('MMM, DD, YYYY');
+      console.log(time);
+      customer.shipped = true;
+      customer.dateShipped = time;
+
+      var relative = moment([2015, 6, 30])
+      var now = moment()
+      var timeDiff = now.diff(relative);
+
+      customer.timeFrom = timeDiff;
+
+      //> send request to backend to update the db customer
+      customer.$save();
+  };
+});
           
             
 //===========================================================================//
@@ -518,23 +571,6 @@ store.controller('adminHistory', function($scope, $http, $location) {
     }); 
 
   console.log('HISTORY CONTROLLER');
-});
-
-//============================== admin queue controller ==============================//
-
-store.controller('adminQueue', function($scope, $http, $location) {
-
-  $http.get('/api/me')
-    .then(function(res) {
-
-      console.log(res.data);
-      if(!res.data) { 
-
-        $location.url('/admin/login')
-      }
-    }); 
-
-  console.log('QUEUE CONTROLLER');
 });
 
 

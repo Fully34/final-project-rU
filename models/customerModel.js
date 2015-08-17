@@ -30,6 +30,8 @@ var Customer = mongoose.model('Customer', {
   inProgress  : {type : Boolean, default : false},
   complete    : {type : Boolean, default : false},
   shipped     : {type : Boolean, default : false},
+  dateShipped : {type : String, default : null},
+  timeFrom    : {type : Number, default : null},
   refunded    : {type : Boolean, default : false}
 });
 

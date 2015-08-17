@@ -4,6 +4,7 @@
 var mongoose = require('mongoose');
 var Customer = require('../models/customerModel.js');
 var Item     = require('../models/itemModel.js');
+var moment   = require('moment');
 
  //============================== controller ==============================//
           
@@ -93,11 +94,17 @@ var adminController = {
 
     var _id = req.params.id;
 
-    Customer.update({_id : _id}, req.body, function(err, doc) {
+    Customer.findOneAndUpdate({_id : _id}, req.body, function(err, doc) {
 
       if (err) {
 
         console.log("NOPE! Error Message: ", err)
+
+        res.send(err);
+
+      } else {
+
+        res.send(req.body);
       }
     });
   }

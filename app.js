@@ -7,6 +7,7 @@ var customerController = require('./controllers/customer.js');
 var adminController = require('./controllers/admin.js');
 var authenticationController = require('./controllers/authenticate.js')
 var mongoose = require('mongoose');
+var moment = require('moment');
 mongoose.connect('mongodb://localhost/cam-store');
 
 //============================== requirements for passport ==============================//
@@ -97,7 +98,7 @@ app.post('/logout', function(req, res) {
 
 app.get('/api/customer', customerController.get);
 app.post('/api/customer', customerController.create);
-app.post('/api/customer/:id', auth, adminController.updateCustomer);
+app.post('/api/customer/:id', adminController.updateCustomer);
 
 //============================== admin api routes ==============================//
         
