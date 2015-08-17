@@ -369,6 +369,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       var timeDiff = now.diff(relative);
 
       customer.timeFrom = timeDiff;
+      console.log(timeDiff);
 
       //> send request to backend to update the db customer
       customer.$save();

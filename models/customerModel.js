@@ -31,7 +31,7 @@ var Customer = mongoose.model('Customer', {
   complete    : {type : Boolean, default : false},
   shipped     : {type : Boolean, default : false},
   dateShipped : {type : String, default : null},
-  timeFrom    : {type : Number, default : null},
+  timeFrom    : {type: Number},
   refunded    : {type : Boolean, default : false}
 });
 
