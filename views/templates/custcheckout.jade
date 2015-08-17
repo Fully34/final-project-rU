@@ -31,20 +31,36 @@ div(class='content-container')
       label(class='bill-form-label') Name: 
       input(class='bill-form-els', type="text", ng-model='customer.name')
       label(class='bill-form-label') E-mail Address: 
-      input(class='bill-form-els', type="text", ng-model='customer.emailAddress')
+      input(class='bill-form-els', type="text", ng-model='customer.email')
+      label(class='bill-form-label') Phone Number: 
+      input(class='bill-form-els', type="text", ng-model='customer.phone')
       hr
       label(class='bill-form-label') Billing Address 1:
-      input(class='bill-form-els', type="text", ng-model='customer.billingAddress')
+      input(class='bill-form-els', type="text", ng-model='customer.billAddress.street1')
       label(class='bill-form-label') Billing Address 2:
-      input(class='bill-form-els', type="text", ng-model='customer.billingAddress')
+      input(class='bill-form-els', type="text", ng-model='customer.billAddress.street2')
       label(class='bill-form-label') City:
-      input(class='bill-form-els', type="text", ng-model='customer.city')
+      input(class='bill-form-els', type="text", ng-model='customer.billAddress.city')
       label(class='bill-form-label') State:
-      input(class='bill-form-state', size='2', type="text", ng-model='customer.state')
+      input(class='bill-form-state', size='2', type="text", ng-model='customer.billAddress.state')
       label(class='bill-form-label') Zip-Code:
-      input(class='bill-form-els', type="text", ng-model='customer.zip')
+      input(class='bill-form-els', type="text", ng-model='customer.billAddress.zip')
 
-      button(class='bill-form-els', type='submit') Continue
+      span Shipping address same as billing address : 
+      input(type='checkbox', ng-model='shipSameAsBill', ng-init='shipSameAsBill = true')
+      hr
+      label(class='bill-form-label block', ng-show='!shipSameAsBill') Shipping Address 1:
+      input(class='bill-form-els', type="text", ng-model='customer.shipAddress.street1', ng-show='!shipSameAsBill')
+      label(class='bill-form-label', ng-show='!shipSameAsBill') Shipping Address 2:
+      input(class='bill-form-els', type="text", ng-model='customer.shipAddress.street2', ng-show='!shipSameAsBill')
+      label(class='bill-form-label', ng-show='!shipSameAsBill') City:
+      input(class='bill-form-els', type="text", ng-model='customer.shipAddress.city', ng-show='!shipSameAsBill')
+      label(class='bill-form-label', ng-show='!shipSameAsBill') State:
+      input(class='bill-form-state', size='2', type="text", ng-model='customer.shipAddress.state', ng-show='!shipSameAsBill')
+      label(class='bill-form-label', ng-show='!shipSameAsBill') Zip-Code:
+      input(class='bill-form-els', type="text", ng-model='customer.shipAddress.zip', ng-show='!shipSameAsBill')
+
+      button(class='bill-form-els', type='submit', ng-click='customer.paid = true') Continue
 
 
 

@@ -32,7 +32,7 @@ store.config(function($routeProvider) {
     })
     .when('/checkout', {
       templateUrl : '/templates/custcheckout',
-      controller  : 'shop'
+      controller  : 'queue'
     })
     .when('/admin/login', {
       templateUrl : '/templates/login',
@@ -123,6 +123,15 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       }
   });
 
+  store.factory('customerFactory', function($resource) {
+
+    var model = $resource( '/api/customer/:id', {id : '@_id'} );
+
+    return {
+      model     : model,
+      customers : model.query()
+    }
+  });
 //===========================================================================//
                         /* ~~~ customer facing controllers ~~~ */ 
 //===========================================================================//
@@ -153,8 +162,18 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
       $scope.currentItemForm = itemName;
 
-      console.log(item, quantity)
-      $scope.addToCart( item, quantity);
+      //> if we pass an item and quantity into the showForm button, that means we hit the buy it now button
+        //> else, we hit the lol jk button
+      if (item && quantity && itemName !== null) {
+
+        $scope.addToCart( item, quantity );
+
+      } else {
+
+        console.log($rootScope.currentCart);
+        $rootScope.currentCart.pop();
+        console.log($rootScope.currentCart);
+      }
     };
 
     //> COME BACK AND DEAL WITH PAGE REFRESH
@@ -164,11 +183,6 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
     //> create cart button and cart in memory
     $scope.addToCart = function(item, quantity) {
 
-      //> price logic for multiple items for cart button
-      $scope.total = parseInt(quantity, 10) * item.price
-
-      //> price logic for running total
-      $rootScope.currentTotal += $scope.total;
 
       //> find the item in the cart?
       var currentCart = $rootScope.currentCart;
@@ -185,7 +199,6 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
           item       : item, 
           quantity   : quantity,
-          totalPrice : $scope.total
         });
 
       //> this will be on the add to cart click
@@ -197,11 +210,18 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
           if (item._id === currentCart[i].item._id ){
 
             currentCart[i].quantity = quantity;
-
-            $rootScope.currentTotal = (item.price * $rootScope.currentCart[i].quantity);
           }
         };
+
+      //> price logic for multiple items for cart button
+      $scope.total = parseInt(quantity, 10) * item.price
+
+      //> price logic for running total
+      $rootScope.currentTotal += $scope.total;
       };
+
+
+
     };//> end addToCart()
 
     //> remove the add to cart button when they add something to the cart
@@ -258,29 +278,29 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
                         /* ~~~ customer checkout ~~~ */ 
 //===========================================================================//
 
-store.controller('checkout', function($scope, $rootScope) {
-
-
-});
-
-  //============================== about controller ==============================//
-
-  store.controller('about', function($scope) {
-
-    console.log('ABOUT CONTROLLER');
-  });
-  //============================== portfolio controller ==============================//
-
-  store.controller('portfolio', function($scope) {
-
-    console.log('PORTFOLIO CONTROLLER');
-  });
-
   //============================== queue controller ==============================//
 
-  store.controller('queue', function($scope) {
+  store.controller('queue', function($scope, $rootScope, $http, $location, customerFactory) {
 
     console.log('QUEUE CONTROLLER');
+
+    $scope.customers = customerFactory.customers;
+
+    $scope.addCustomer = function( customer ) {
+
+      customer.order = $rootScope.currentCart;
+
+      console.log(customer);
+
+      var newCustomer = new customerFactory.model(this.newCustomer)
+
+      newCustomer.$save(function(returned) {
+
+        $scope.customers.push(returned);
+      });     
+       
+      $location.url('/queue')
+    }
   });
           
           
@@ -321,11 +341,12 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope) {
     $http.get('/api/me')
       .then(function(res) {
 
-        console.log(res.data);
+        // console.log(res.data);
+
         if(!res.data) { 
 
           $location.url('/admin/login')
-        }
+        };
       }); 
 
     //> toggle the addItem form
@@ -354,13 +375,13 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope) {
       });
 
       this.newItem = {};
-    }
+    };
 
     // > if the checkbox is false, the item is not present in the customer store
     // > if the checkbox is true, the item is present in the customer store
     $scope.toggleStore = function(item, forSale) {
 
-      console.log(item);
+      // console.log(item);
 
       // item.forSale = forSale;
 
@@ -369,7 +390,7 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope) {
         console.log('RETURNED ' , returned);
 
       });
-    }
+    };
 
     //> send DELETE req to backend --> (handled by app.delete('/api/items/:id'))
     $scope.deleteItem = function(item, index) {

@@ -93,14 +93,21 @@ app.post('/logout', function(req, res) {
   res.send(200);
 });
 
+//============================== customer checkout routes ==============================//
+
+app.get('/api/customer', customerController.get);
+app.post('/api/customer', customerController.create);
+app.post('/api/customer/:id', auth, adminController.updateCustomer);
+
 //============================== admin api routes ==============================//
         
 app.get('/api/me', function(req, res) {
 
   res.send(req.user);
 });
+
 app.get('/api/items', adminController.get);
-app.post('/api/items/:id', auth, adminController.update);
+app.post('/api/items/:id', auth, adminController.updateItem);
 app.post('/api/items', auth, adminController.create);
 app.delete('/api/items/:id', auth, adminController.remove);
 //============================== server ==============================//

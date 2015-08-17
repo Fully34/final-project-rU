@@ -16,7 +16,16 @@ var adminController = {
 
     Item.find({}, function(err, doc) {
 
-      res.send(doc);
+      if (err) {
+
+        console.log("NOPE! Error: ", err);
+
+        res.send(err);
+
+      } else {
+
+        res.send(doc);
+      };
     });
   },
 
@@ -39,7 +48,7 @@ var adminController = {
     });
   },
 
-  update : function(req, res) {
+  updateItem : function(req, res) {
 
     // console.log(req.body);
 
@@ -76,6 +85,19 @@ var adminController = {
       } else {
 
         res.send(_id);
+      }
+    });
+  },
+
+  updateCustomer : function(req, res) {
+
+    var _id = req.params.id;
+
+    Customer.update({_id : _id}, req.body, function(err, doc) {
+
+      if (err) {
+
+        console.log("NOPE! Error Message: ", err)
       }
     });
   }

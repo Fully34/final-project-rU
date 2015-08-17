@@ -13,20 +13,41 @@ var customerController = {
 		res.render('layout');
 	},
 
-  // getShop : function(req, res) {
+  get : function(req, res) {
 
-  //   Item.find({}, function(err, doc) {
+    Customer.find({}, function(err, doc) {
 
-  //     if (err) {
+      if(err) {
 
-  //       res.send("ERROR", err);
+        console.log("NOPE! Error: ", err);
 
-  //     } else {
+        res.send(null);
+        
+      } else {
 
-  //       res.send(doc);
-  //     }
-  //   })
-  // }
+        res.send(doc);
+      }
+    });
+  }, 
+
+  create : function(req, res) {
+
+    var customer = new Customer(req.body);
+
+    customer.save(function(err, doc) {
+
+      if (err) {
+
+        console.log("NOPE! Error: ", err);
+
+        res.send(null);
+        
+      } else {
+
+        res.send(doc);
+      }
+    });
+  }
 };
 
 module.exports = customerController;
