@@ -39,7 +39,7 @@ store.config(function($routeProvider) {
       controller  : 'login'
     })
     .when('/admin', {
-      templateUrl : '/templates/adminhome',
+      templateUrl : '/templates/adminHome',
       controller  : 'adminHome'
     })
     .when('/admin/queue', {
