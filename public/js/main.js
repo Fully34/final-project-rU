@@ -398,8 +398,8 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       customer.dateShipped = time;
 
       // create a time diff to set orderBy 
-      var relative = moment([2015, 6, 30])
-      var now = moment()
+      var relative = moment([2015, 6, 30]);
+      var now = moment();
       var timeDiff = now.diff(relative);
 
       // set prop on customer order to tell how new they are relative to one another
@@ -429,7 +429,7 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope, adm
 
         $location.url('/admin/login')
       }
-    }); 
+    });
 
   // initiate the list when the controller is called
   $scope.adminList = adminFactory.admin.query( function(returned) {
