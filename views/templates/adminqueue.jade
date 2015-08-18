@@ -31,7 +31,7 @@ div(class='table-container')
         td(class='tbl-item-detail') {{customer.name}}
         td(class='tbl-item-detail', ng-model='customer.inProgress') 
           span(ng-if='customer.inProgress') Started
-          button(ng-click='inProg(customer)', ng-if='!customer.inProgress') Starting Now!
+          button(ng-click='inProg(customer)', ng-if='!customer.inProgress') Starting!
         td(class='tbl-item-detail')
           span(ng-if='customer.complete') COMPLETE!
           button(ng-click='completed(customer)', ng-if='!customer.complete') Finished!

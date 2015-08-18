@@ -5,8 +5,9 @@ mongoose.connect('mongodb://localhost/cam-store');
 
 var admin = {
 
-  username : 'Cameron',
-  password : 'test'
+  username   : 'Cameron',
+  password   : 'test',
+  takeOrders : true
 }
 
 var newAdmin = new User(admin);

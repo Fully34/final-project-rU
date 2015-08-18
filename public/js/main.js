@@ -123,6 +123,8 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       }
   });
 
+//============================== Customer Factory ==============================//
+        
   store.factory('customerFactory', function($resource) {
 
     var model = $resource( '/api/customer/:id', {id : '@_id'} );
@@ -132,6 +134,19 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       customers : model.query()
     }
   });
+
+//============================== adminFactory ==============================//
+
+  store.factory('adminFactory', function($resource) {
+
+    var admin = $resource( '/admin/:id', {id : '@_id'} );
+
+    return {
+      admin      : admin,
+      // adminList  : admin.query()
+    }
+  });
+        
 //===========================================================================//
                         /* ~~~ customer facing controllers ~~~ */ 
 //===========================================================================//
@@ -139,18 +154,24 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
   
   //============================== home controller ==============================//
           
-  store.controller('home', function($scope, $rootScope) {
+  store.controller('home', function($scope, $rootScope, adminFactory) {
+
 
     $scope.menu = function() {
 
     }
+
+    adminFactory.admin.query( function(returned) {
+
+      $scope.takeOrders = returned[0].takeOrders;
+    });
 
     console.log('HOME CONTROLLER');
   });
 
   //============================== shop controller ==============================//
 
-  store.controller('shop', function($scope, itemFactory, $rootScope) {
+  store.controller('shop', function($scope, itemFactory, $rootScope, adminFactory) {
 
     $scope.items = itemFactory.items;
 
@@ -238,6 +259,15 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
       }).indexOf(item._id);
     };
+
+    //> This is asynchronous --> Need to set the scope var inside of there or else it is undefined
+    adminFactory.admin.query( function(returned) {
+
+      $scope.takeOrders = returned[0].takeOrders;
+    });
+
+    //> THIS DOESN'T WORK, DUMMY!
+    // $scope.takeOrders = $scope.adminList[0];
   });
 
 
@@ -286,6 +316,8 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       //> redirect to queue immediately
       $location.url('/queue');
     }
+
+
 //============================== checkout controls ==============================//
         
     //> remove item from cart at checkout screen
@@ -316,15 +348,15 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
     $scope.showCheckoutForm = false;
 
-    $scope.logCart = function() {
+    // $scope.logCart = function() {
 
-      console.log($scope.currentCart)
-    }
+    //   console.log($scope.currentCart)
+    // }
   });
 
     //============================== ADMIN queue ==============================//
 
-  store.controller('adminQueue', function($scope, $rootScope, $http, $location, customerFactory) {
+  store.controller('adminQueue', function($scope, $rootScope, $http, $location, customerFactory, adminFactory) {
 
     console.log('admin queue');
 
@@ -359,15 +391,18 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
     $scope.shipped = function(customer) {
 
+      // create a date string to display
       var time = moment().format('MMM, DD, YYYY');
       console.log(time);
       customer.shipped = true;
       customer.dateShipped = time;
 
+      // create a time diff to set orderBy 
       var relative = moment([2015, 6, 30])
       var now = moment()
       var timeDiff = now.diff(relative);
 
+      // set prop on customer order to tell how new they are relative to one another
       customer.timeFrom = timeDiff;
       console.log(timeDiff);
 
@@ -383,7 +418,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
 //============================== home ==============================//
         
-store.controller('adminHome', function($scope, $http, $location, $rootScope) {
+store.controller('adminHome', function($scope, $http, $location, $rootScope, adminFactory) {
 
   $http.get('/api/me')
     .then(function(res) {
@@ -395,6 +430,26 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope) {
         $location.url('/admin/login')
       }
     }); 
+
+  // initiate the list when the controller is called
+  $scope.adminList = adminFactory.admin.query( function(returned) {
+
+    $scope.takeOrders = returned.takeOrders;
+  });
+
+  $scope.toggleOrders = function( admin, bool ) {
+
+    admin.takeOrders = bool;
+
+    admin.$save( function(returned) {
+
+      $scope.adminList[0] = returned;
+
+      $scope.takeOrders = returned.takeOrders;
+
+      console.log($scope.takeOrders);
+    });
+  }
 
   // console.log('I AM THE ADMIN CONTROLLER');
 });

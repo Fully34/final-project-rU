@@ -4,12 +4,15 @@
 var mongoose = require('mongoose');
 var Customer = require('../models/customerModel.js');
 var Item     = require('../models/itemModel.js');
+var Admin    = require('../models/userSchema.js')
 var moment   = require('moment');
 
  //============================== controller ==============================//
           
 var adminController = {
+
   index: function(req, res) {
+    
     res.render('layout');
   },
 
@@ -38,9 +41,9 @@ var adminController = {
 
       if (err) {
 
-        console.log(err);
+        console.log("ERROR");
 
-        res.send(null);
+        res.send(err);
 
       } else {
         
@@ -81,7 +84,8 @@ var adminController = {
 
       if (err) {
 
-        res.send('NOPE ', err);
+        console.log("NOPE!")
+        res.send(err);
 
       } else {
 
@@ -94,16 +98,53 @@ var adminController = {
 
     var _id = req.params.id;
 
-    Customer.findOneAndUpdate({_id : _id}, req.body, function(err, doc) {
+    // console.log('BODY -------------------------', req.body)
+    Customer.update({_id : _id}, req.body, function(err, doc) {
 
       if (err) {
 
         console.log("NOPE! Error Message: ", err)
-
         res.send(err);
 
       } else {
 
+        // console.log('DOC -----------------------------', doc);
+        res.send(req.body);
+      }
+    });
+  },
+
+  returnAdmin : function(req, res) {
+
+    Admin.find({}, function(err, doc) {
+
+      if (err) {
+
+        console.log("ERROR");
+        res.send(err);
+
+      } else {
+
+        res.send(doc);
+      }
+    });
+  },
+
+  toggleOrder : function(req, res) {
+
+    // console.log("DAT BODY ----------------", req.body);
+    // console.log("ID _______________________", req.body._id);
+
+    Admin.update({_id :  req.body._id}, req.body, function(err, doc) {
+
+      if (err) {
+
+        console.log('ERROR');
+        res.send(err);
+
+      } else {
+
+        // console.log('success');
         res.send(req.body);
       }
     });

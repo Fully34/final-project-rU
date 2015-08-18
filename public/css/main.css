@@ -13,11 +13,15 @@
   }
           
   body {
-      background-color: #C56615;
-      /*height: 5000px;*/
-      font-family: "Rye", sans-serif;
+      background-color: #6E523A;
+      font-family: "Lato", sans-serif;
+      font-weight: 500;
       text-align: center;
       min-height: 500px;
+  }
+  
+  h1,h2,h3,h4,h5,h6 {
+    font-family: "Rye", sans-serif;
   }
 
   .big-wrapper {
@@ -27,7 +31,7 @@
 
   .main-container {
     text-align: center;
-    background-color: #893F13;
+    background-color: #6E523A;
   }
 
   .landing-border-accent {
@@ -222,7 +226,8 @@ button:hover .menu-icon {
 }
 
 .item-container {
-  border: 1px solid #6C0900;
+  border: 3px dashed #6C0900;
+  border-radius: 20px;
   display: inline-block;
   padding: 1.1em;
   margin: 20px;
@@ -233,6 +238,14 @@ button:hover .menu-icon {
   text-align: left;
 }
 
+.item-header {
+  text-decoration: underline;
+}
+
+.item-detail {
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+}
 /*===========================================================================*/
                         /* ~~~ customer shop ~~~ */ 
 /*===========================================================================*/
@@ -345,6 +358,65 @@ button:hover .menu-icon {
 .bill-form-state {
   display: block;
   padding: 0.5em;
+}
+
+
+/*===========================================================================*/
+                        /* ~~~ Overrides ~~~ */ 
+/*===========================================================================*/
+
+.not-orders {
+  background-color: #D65947;
+  font-family: 'Lato', sans-serif;
+  padding: 1em;
+  text-decoration: underline;
+}
+
+.big-btn {
+  border-radius: 1000px;
+  font-size: 2em;
+  height: 9em;
+  width: 9em;
+}
+
+.order-off {
+  background-color: red;
+  color: black;
+}
+
+.big-btn.order-off:hover {
+  background-color: black;
+  border: 5px solid red;
+  color: red;
+}
+
+
+.big-btn.order-on:hover {
+  background-color: black;
+  border: 5px solid #69BD3C;
+  color: #69BD3C;
+}
+
+.order-on {
+  background-color: #69BD3C;
+  color: black;
+}
+
+.status-header-on {
+  background-color: black;
+  border: 5px solid #69BD3C;
+  color: #69BD3C;
+}
+
+.status-header-off {
+  background-color: black;
+  border: 5px solid red;
+  color: red;
+}
+
+.status-header {
+  display: inline-block;
+  padding: 1em;
 }
 
 /*===========================================================================*/

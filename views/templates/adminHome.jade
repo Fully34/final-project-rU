@@ -1,2 +1,10 @@
-div(class='spacer')
+div(class='spacer-small')
   h1 ADMIN HOME
+
+div(class='status-container', ng-repeat='admin in adminList')
+  h1(class='status-header status-header-on', ng-show='admin.takeOrders')  Order Status -- ON
+  h1(class='status-header status-header-off', ng-hide='admin.takeOrders')  Order Status -- OFF 
+
+div(class='big-btn-container', ng-repeat='admin in adminList')
+  button(class='big-btn order-off', ng-click='toggleOrders( admin, false )', ng-show='admin.takeOrders') Stop Taking Orders
+  button(class='big-btn order-on', ng-click='toggleOrders( admin, true )', ng-hide='admin.takeOrders') Start Taking Orders

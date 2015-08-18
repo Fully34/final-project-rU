@@ -111,6 +111,12 @@ app.get('/api/items', adminController.get);
 app.post('/api/items/:id', auth, adminController.updateItem);
 app.post('/api/items', auth, adminController.create);
 app.delete('/api/items/:id', auth, adminController.remove);
+
+//============================== admin order state route ==============================//
+
+app.get('/admin', adminController.returnAdmin);
+app.post('/admin/:id', auth, adminController.toggleOrder);
+
 //============================== server ==============================//
         
 var server = app.listen(9001, function() {
