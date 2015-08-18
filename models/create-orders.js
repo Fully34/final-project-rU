@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Customer = require('./customerModel.js');
 
-mongoose.connect('mongodb://localhost/cam-store');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/cam-store');
 
   var mockCustomer1 = {
 
@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/cam-store');
   order       : [
   {
     name        : 'Wine Rack',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is an awesome wine rack!',
     price       : 40000,
     type        : 'Rack',
@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost/cam-store');
   }, 
   {
     name        : 'Swee Art',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is some sweet horse shoe art!',
     price       : 60000,
     type        : 'Art',
@@ -63,7 +63,7 @@ var newMockCustomer1 = new Customer(mockCustomer1);
   order       : [
   {
     name        : 'Wine Rack',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is an awesome wine rack!',
     price       : 40000,
     type        : 'Rack',
@@ -71,7 +71,7 @@ var newMockCustomer1 = new Customer(mockCustomer1);
   }, 
   {
     name        : 'Swee Art',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is some sweet horse shoe art!',
     price       : 60000,
     type        : 'Art',
@@ -117,7 +117,7 @@ var newMockCustomer2 = new Customer(mockCustomer2);
   order       : [
   {
     name        : 'Wine Rack',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is an awesome wine rack!',
     price       : 40000,
     type        : 'Rack',
@@ -125,7 +125,7 @@ var newMockCustomer2 = new Customer(mockCustomer2);
   }, 
   {
     name        : 'Swee Art',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is some sweet horse shoe art!',
     price       : 60000,
     type        : 'Art',
@@ -171,7 +171,7 @@ var newMockCustomer3 = new Customer(mockCustomer3);
   order       : [
   {
     name        : 'Wine Rack',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is an awesome wine rack!',
     price       : 40000,
     type        : 'Rack',
@@ -179,7 +179,7 @@ var newMockCustomer3 = new Customer(mockCustomer3);
   }, 
   {
     name        : 'Swee Art',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is some sweet horse shoe art!',
     price       : 60000,
     type        : 'Art',
@@ -225,7 +225,7 @@ var newMockCustomer4 = new Customer(mockCustomer4);
   order       : [
   {
     name        : 'Wine Rack',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is an awesome wine rack!',
     price       : 40000,
     type        : 'Rack',
@@ -233,7 +233,7 @@ var newMockCustomer4 = new Customer(mockCustomer4);
   }, 
   {
     name        : 'Swee Art',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is some sweet horse shoe art!',
     price       : 60000,
     type        : 'Art',
@@ -279,7 +279,7 @@ var newMockCustomer5 = new Customer(mockCustomer5);
   order       : [
   {
     name        : 'Wine Rack',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is an awesome wine rack!',
     price       : 40000,
     type        : 'Rack',
@@ -287,7 +287,7 @@ var newMockCustomer5 = new Customer(mockCustomer5);
   }, 
   {
     name        : 'Swee Art',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is some sweet horse shoe art!',
     price       : 60000,
     type        : 'Art',
@@ -333,7 +333,7 @@ var newMockCustomer6 = new Customer(mockCustomer6);
   order       : [
   {
     name        : 'Wine Rack',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is an awesome wine rack!',
     price       : 40000,
     type        : 'Rack',
@@ -341,7 +341,7 @@ var newMockCustomer6 = new Customer(mockCustomer6);
   }, 
   {
     name        : 'Swee Art',
-    image       : 'http://www.placehold.it/300',
+    image       : 'https://www.placehold.it/300',
     description : 'This is some sweet horse shoe art!',
     price       : 60000,
     type        : 'Art',
@@ -387,7 +387,7 @@ var newMockCustomer7 = new Customer(mockCustomer7);
 //   order       : [
 //   {
 //     name        : 'Wine Rack',
-//     image       : 'http://www.placehold.it/300',
+//     image       : 'https://www.placehold.it/300',
 //     description : 'This is an awesome wine rack!',
 //     price       : 40000,
 //     type        : 'Rack',
@@ -395,7 +395,7 @@ var newMockCustomer7 = new Customer(mockCustomer7);
 //   }, 
 //   {
 //     name        : 'Swee Art',
-//     image       : 'http://www.placehold.it/300',
+//     image       : 'https://www.placehold.it/300',
 //     description : 'This is some sweet horse shoe art!',
 //     price       : 60000,
 //     type        : 'Art',
