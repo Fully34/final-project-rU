@@ -17,9 +17,5 @@
 
   "devDependencies": {
     "gulp": "^3.9.0"
-  },
-  
-  "scripts": {
-  "start": "node app.js"
   }
 }
