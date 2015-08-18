@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var User = require('./userSchema.js');
 
-mongoose.connect('mongodb://localhost/cam-store');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/cam-store');
 
 var admin = {
 
