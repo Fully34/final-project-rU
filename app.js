@@ -8,7 +8,7 @@ var adminController = require('./controllers/admin.js');
 var authenticationController = require('./controllers/authenticate.js')
 var mongoose = require('mongoose');
 var moment = require('moment');
-mongoose.connect('mongodb://localhost/cam-store');
+mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/cam-store');
 
 //============================== requirements for passport ==============================//
 
@@ -118,7 +118,9 @@ app.get('/admin', adminController.returnAdmin);
 app.post('/admin/:id', auth, adminController.toggleOrder);
 
 //============================== server ==============================//
-        
-var server = app.listen(9001, function() {
+
+var port = process.env.PORT || 9001;
+
+var server = app.listen(port, function() {
 	console.log('Express server listening on port ' + server.address().port);
 });
