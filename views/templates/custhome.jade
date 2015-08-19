@@ -2,15 +2,20 @@ a(ng-href='/#/checkout')
   button(class='cart-btn', ng-if='currentTotal > 0') Cart --> ${{currentTotal}}
   
 div(class='container big-wrapper main-container landing-container clearfix')
-    h1(class='') Welcome to the shoe factory!
+    h1(class='landing-detail') HORSESHOE ART AND WINE RACKS ARE SOLD HERE!
     h2(class='not-orders', ng-if='!takeOrders') We have too many orders for the time being, the shop will be back online soon!  Sorry for the inconvenience!
-    h4(class='landing-detail let-it-breathe') Cameron makes and sells high quality horseshoe art and wine racks with his bare hands!
-    div(class='container landing-link-container')
-      a(class='landing-link let-it-breathe', href='/#/portfolio')
-        h3 Check out the gallery!
-    div(class='container landing-link-container')
-      a(class='landing-link let-it-breathe', href='/#/about')
-        h3 Learn about the process
+    div(class='value-stmnt-container')
+      h4(class='landing-detail') We make the highest quality horseshoe art and wine racks with our bare hands!  
+      h4(class='landing-detail') Then we sell said awesomeness to you!  
+      h4(class='landing-detail') Join the party and buy something awesome!
+    div(class='spacer')
+    div(class='spacer')
+    //- div(class='container landing-link-container')
+    //-   a(class='landing-link let-it-breathe', href='/#/portfolio')
+    //-     h3 Check out the gallery!
+    //- div(class='container landing-link-container')
+    //-   a(class='landing-link let-it-breathe', href='/#/about')
+    //-     h3 Learn about the process
     div(class='container landing-link-container')
       a(class='landing-link let-it-breathe', href='/#/shop')
         h2 Check out the shop!
