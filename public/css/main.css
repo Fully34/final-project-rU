@@ -165,9 +165,9 @@
   }
 
 button {
-  color: #6D0000;
+  color: black;
   background-color: #EFDFA9;
-  border: 2px solid #6D0000;
+  border: 2px solid black;
 }
 
 button:hover .menu-icon {
@@ -200,8 +200,8 @@ button:hover .menu-icon {
 .menu-icon {
   display: inline-block;
   padding : 5px;
-  border-top: 2px solid #6D0000;
-  border-bottom: 2px solid #6D0000;
+  border-top: 2px solid black;
+  border-bottom: 2px solid black;
 }
 
 /*===========================================================================*/
@@ -224,9 +224,11 @@ button:hover .menu-icon {
   .landing-detail {
     color: black;
     font-family: "Lato", sans-serif;
-    /*text-shadow: 0 0 3px white;*/
   }
-
+  
+  .landing-title {
+    text-shadow: 0 0 3px #EFDFA9;
+  }
   .landing-container {
     background : url('./assets/pyramid-rack.gif');
   }

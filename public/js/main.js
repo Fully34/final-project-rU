@@ -78,7 +78,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
           shopItems : '/#/admin/shop',
           shopIName : 'Shop Items',
           custShop  : '/#/shop',
-          custSName : 'Customer Shop View',
+          custSName : 'Customer Shop',
           history   : '/#/admin/history', 
           histName  : 'History',
           logout    : '/logout',

@@ -17,7 +17,7 @@ html(lang='en', ng-app='store')
     //- navbar originally created by Mary Lou (http://tympanus.net/codrops/author/crnacura/), she's awesome
     div(id='st-container',class='st-container st-effect-11')
       nav(class='st-menu st-effect-11', id='menu-11', ng-controller='nav') 
-        h2(class="icon icon-key") Menu!
+        h2(class="icon icon-star") Menu!
         //- ul(ng-if='!adminLoggedIn')
         //-   li(ng-repeat='element in customerElements')
         //-     a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
@@ -27,23 +27,23 @@ html(lang='en', ng-app='store')
         //-     a(class="icon icon-location", ng-href="{{element.route}}") {{element.name}}
         ul
           li
-            a(class="icon icon-location", ng-href="{{navElements.home}}", ng-if='navElements.home') {{navElements.homeName}}
+            a(class="icon icon-world", ng-href="{{navElements.home}}", ng-if='navElements.home') {{navElements.homeName}}
           li
-            a(class="icon icon-location", ng-href="{{navElements.queue}}", ng-if='navElements.queue') {{navElements.queueName}}
+            a(class="icon icon-stack", ng-href="{{navElements.queue}}", ng-if='navElements.queue') {{navElements.queueName}}
           li
             a(class="icon icon-location", ng-href="{{navElements.shopItems}}", ng-if='navElements.shopItems') {{navElements.shopIName}}
           li
-            a(class="icon icon-location", ng-href="{{navElements.custShop}}", ng-if='navElements.custShop') {{navElements.custSName}}
+            a(class="icon icon-shop", ng-href="{{navElements.custShop}}", ng-if='navElements.custShop') {{navElements.custSName}}
           li
-            a(class="icon icon-location", ng-href="{{navElements.history}}", ng-if='navElements.history') {{navElements.histName}}
+            a(class="icon icon-search", ng-href="{{navElements.history}}", ng-if='navElements.history') {{navElements.histName}}
           li
-            a(class="icon icon-location", ng-href="{{navElements.about}}", ng-if='navElements.about') {{navElements.aboutName}}
+            a(class="icon icon-data", ng-href="{{navElements.about}}", ng-if='navElements.about') {{navElements.aboutName}}
           li
-            a(class="icon icon-location", ng-href="{{navElements.portfolio}}", ng-if='navElements.portfolio') {{navElements.portName}}
+            a(class="icon icon-camera", ng-href="{{navElements.portfolio}}", ng-if='navElements.portfolio') {{navElements.portName}}
           li
-            a(class="icon icon-location", ng-href="{{navElements.shop}}", ng-if='navElements.shop') {{navElements.shopName}}
+            a(class="icon icon-shop", ng-href="{{navElements.shop}}", ng-if='navElements.shop') {{navElements.shopName}}
           li
-            a(class="icon icon-location", ng-href="{{navElements.logout}}", ng-if='navElements.logout') {{navElements.logoutName}}
+            a(class="icon icon-user", ng-href="{{navElements.logout}}", ng-if='navElements.logout') {{navElements.logoutName}}
 
 
       div(class='st-pusher content-wrapper')
