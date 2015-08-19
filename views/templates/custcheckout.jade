@@ -28,8 +28,10 @@ div(class='content-container')
 
   div(class='bill-form-container', ng-if='showCheckoutForm')
     form(ng-submit='addCustomer(  )')
-      label(class='bill-form-label') Name: 
-      input(class='bill-form-els', type="text", ng-model='newCustomer.name')
+      label(class='bill-form-label') First Name: 
+      input(class='bill-form-els', type="text", ng-model='newCustomer.firstName')
+      label(class='bill-form-label') Last Name:
+      input(class='bill-form-els', type="text", ng-model='newCustomer.lastName')
       label(class='bill-form-label') E-mail Address: 
       input(class='bill-form-els', type="text", ng-model='newCustomer.email')
       label(class='bill-form-label') Phone Number: 

@@ -74,7 +74,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
           home      : '/#/admin',
           homeName  : 'Home',
           queue     : '/#/admin/queue',
-          queueName : 'Queue',
+          queueName : 'Orders',
           shopItems : '/#/admin/shop',
           shopIName : 'Shop Items',
           custShop  : '/#/shop',
@@ -97,7 +97,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
           about      : '/#/about',
           aboutName  : 'About',
           queue      : '/#/queue',
-          queueName  : 'Queue',
+          queueName  : 'Orders',
           portfolio  : '/#/portfolio',
           portName   : 'Portfolio',
           shop       : '/#/shop',
@@ -156,10 +156,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
           
   store.controller('home', function($scope, $rootScope, adminFactory) {
 
-
-    $scope.menu = function() {
-
-    }
+    $scope.takeOrders = true;
 
     adminFactory.admin.query( function(returned) {
 
@@ -173,6 +170,8 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
 
   store.controller('shop', function($scope, itemFactory, $rootScope, adminFactory) {
 
+    $scope.takeOrders = true;
+    
     $scope.items = itemFactory.items;
 
     //> state variable for the showing and hiding of the form
@@ -389,7 +388,7 @@ store.controller('nav', function($scope, $http, $location, $rootScope) {
       customer.$save();
     };
 
-    $scope.shipped = function(customer) {
+    $scope.shipped = function(customer) { 
 
       // create a date string to display
       var time = moment().format('MMM, DD, YYYY');

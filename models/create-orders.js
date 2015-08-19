@@ -5,7 +5,8 @@ mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/cam-store');
 
   var mockCustomer1 = {
 
-  name        : 'Chris',
+  firstName   : 'Chris',
+  lastName    : 'Fullinwider',
   order       : [
   {
     name        : 'Wine Rack',
@@ -59,7 +60,8 @@ var newMockCustomer1 = new Customer(mockCustomer1);
 
   var mockCustomer2 = {
 
-  name        : 'Ken',
+  firstName   : 'Ken',
+  lastName    : 'Sayers',
   order       : [
   {
     name        : 'Wine Rack',
@@ -113,7 +115,8 @@ var newMockCustomer2 = new Customer(mockCustomer2);
 
     var mockCustomer3 = {
 
-  name        : 'Sarah',
+  firstName   : 'Sarah',
+  lastName    : 'Fallon',
   order       : [
   {
     name        : 'Wine Rack',
@@ -167,7 +170,8 @@ var newMockCustomer3 = new Customer(mockCustomer3);
 
     var mockCustomer4 = {
 
-  name        : 'Andrew',
+  firstName   : 'Andrew',
+  lastName    : 'Miller',
   order       : [
   {
     name        : 'Wine Rack',
@@ -221,7 +225,8 @@ var newMockCustomer4 = new Customer(mockCustomer4);
 
     var mockCustomer5 = {
 
-  name        : 'Ron',
+  firstName   : 'Ron',
+  lastName    : 'Granger',
   order       : [
   {
     name        : 'Wine Rack',
@@ -275,7 +280,8 @@ var newMockCustomer5 = new Customer(mockCustomer5);
 
     var mockCustomer6 = {
 
-  name        : 'Katie',
+  firstName   : 'Katie',
+  lastName    : 'Elliot',
   order       : [
   {
     name        : 'Wine Rack',
@@ -329,7 +335,8 @@ var newMockCustomer6 = new Customer(mockCustomer6);
 
     var mockCustomer7 = {
 
-  name        : 'Steve',
+  firstName   : 'Steve',
+  lastName    : 'DeFelipo',
   order       : [
   {
     name        : 'Wine Rack',

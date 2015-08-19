@@ -8,7 +8,8 @@ var mongoose = require('mongoose');
 var Customer = mongoose.model('Customer', {
 
   // THESE WILL HAVE MONGOOSE ID'S, USE THOSE FOR TRACKING PURPOSES IN THE QUEUE
-  name          : {type : String, required : true},
+  firstName     : {type : String, required : true},
+  lastName      : {type: String, required  : true},
   order         : {type: Array, required : true},
   billAddress   : {
     street1 : {type : String, required : true},

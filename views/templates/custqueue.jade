@@ -2,44 +2,43 @@ a(ng-href='/#/checkout')
   button(class='cart-btn', ng-if='currentTotal > 0') Cart --> ${{currentTotal}}
   
 
-h1 Recently Shipped
+h3(class='table-title') Recently Shipped
 div(class='table-container')
-  table(class='list', )
-    tr(class='table-row')
-      th(class='table-headers')
-        h2 Order ID:
-      th(class='table-headers')
-        h2 Name:
-      th(class='table-headers')
-        h2 Shipped on:
+  table(class='list recent-shipped-list', )
+    tr(class='table-row ship-list-detail')
+      th(class='table-headers ship-list-detail')
+        h3 Order ID:
+      th(class='table-headers ship-list-detail')
+        h3 Name:
+      th(class='table-headers ship-list-detail')
+        h3 Shipped on:
     tr(class='table-row', ng-repeat='customer in customers | orderBy : "timeFrom" : true | limitTo : 5', ng-if='customer.shipped')
-      td(class='tbl-item-detail') {{customer._id}}
-      td(class='tbl-item-detail') {{customer.name}}
-      td(class='tbl-item-detail') {{customer.dateShipped}}
-
-h1 On the stack
+      td(class='ship-list-detail') {{customer._id.substring(12, 24)}}
+      td(class='ship-list-detail') {{customer.firstName}} {{customer.lastName.substring(0,1)}}.
+      td(class='ship-list-detail') {{customer.dateShipped}}
+h1(class='table-title') On the stack
 div(class='table-container')
     table(class='list')
       tr(class='table-row')
         th(class='table-headers-queue')
-          h2 Order ID:
+          h3 Order ID:
         th(class='table-headers-queue')
-          h2 Name:
+          h3 Name:
         th(class='table-headers-queue')
-          h2 In-progress:
+          h3 In-progress:
         th(class='table-headers-queue')
-          h2 Complete:
+          h3 Complete:
         th(class='table-headers-queue')
-          h2 Shipped:
+          h3 Shipped:
       tr(class='table-row', ng-repeat='customer in customers', ng-if='!customer.shipped')
-        td(class='tbl-item-detail') {{customer._id}}
-        td(class='tbl-item-detail') {{customer.name}}
+        td(class='tbl-item-detail') {{customer._id.substring(12, 24)}}
+        td(class='tbl-item-detail') {{customer.firstName}} {{customer.lastName.substring(0,1)}}.
         td(class='tbl-item-detail', ng-model='customer.inProgress') 
-          span(ng-if='customer.inProgress') Started
-          span(ng-if='!customer.inProgress') Not Yet
+          span(class='stage-complete', ng-if='customer.inProgress') Started
+          span(class='stage-incomplete', ng-if='!customer.inProgress') Not Yet
         td(class='tbl-item-detail')
-          span(ng-if='customer.complete') COMPLETE!
-          span(ng-if='!customer.complete') Not Yet
+          span(class='stage-complete', ng-if='customer.complete') Complete!
+          span(class='stage-incomplete', ng-if='!customer.complete') Not Yet
         td(class='tbl-item-detail')
-          span(ng-if='customer.shipped') SHIPPED!
-          span(ng-if='!customer.shipped') Not Yet
+          span(class='stage-complete', ng-if='customer.shipped') SHIPPED!
+          span(class='stage-incomplete', ng-if='!customer.shipped') Not Yet

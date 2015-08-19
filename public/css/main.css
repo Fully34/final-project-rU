@@ -13,7 +13,7 @@
   }
           
   body {
-      background-color: #D1D9ED;
+      background: url('./assets/stained-paper.jpg');
       font-family: "Lato", sans-serif;
       font-weight: 500;
       text-align: center;
@@ -31,7 +31,7 @@
   }
 
   .content-wrapper {
-    border: 3px solid black;
+    /*border: 3px solid black;*/
     border-radius: 10px;
     margin: 1em;
     margin: 0 auto;
@@ -40,7 +40,7 @@
 
   .main-container {
     text-align: center;
-    background-color: #D1D9ED;
+    /*background-color: #D1D9ED;*/
   }
 
   .landing-border-accent {
@@ -120,6 +120,10 @@
       text-align: center;
   }
 
+  .hidden {
+    display: none;
+  }
+
   .absolute {
       position: absolute;
   }
@@ -170,6 +174,18 @@ button:hover .menu-icon {
   border-top: 2px solid #E4E4BC;
   border-bottom: 2px solid #E4E4BC;
 }
+
+.menu-top {
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.top-bar {
+  border: 2px solid black;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-top: none;
+  position: relative;
+}
 /*===========================================================================*/
                         /* ~~~ custom menu bar ~~~ */ 
 /*===========================================================================*/
@@ -193,17 +209,22 @@ button:hover .menu-icon {
 /*===========================================================================*/
 
   .landing-link {
-    background-color: white;
-    border: 2px dashed #C56616;
+    /*background-color: white;*/
+    /*border: 2px dashed #C56616;*/
     border-radius: 10px;
+    color: black;
     display: inline-block;
   }
 
-  .landing-container {
-    background-image : url(https://www.wallpaperup.com/uploads/wallpapers/2013/02/15/40517/3a90a29d9cc2fdd7bf7c0c26e17c7dd2.jpg);
-    background-size: cover;
-    /*height: 4000px;*/
+  .landing-link:hover {
+    background-color: black;
+    color: #EFDFA9;
   }
+
+  .landing-detail {
+    font-family: "Lato", sans-serif;
+  }
+
 
 /*===========================================================================*/
                         /* ~~~ shop (ADMIN) ~~~ */ 
@@ -285,7 +306,7 @@ button:hover .menu-icon {
 }
 
 /*===========================================================================*/
-                        /* ~~~ checkout page~~~ */ 
+                        /* ~~~ queue/checkout page~~~ */ 
 /*===========================================================================*/
 
 .content-container {
@@ -313,16 +334,31 @@ button:hover .menu-icon {
   width: 80%;
 }
 
-.table-headers {
-  width: 25%;
+.table-row:nth-child(odd) {
+  background-color: rgba(192, 242, 241, 0.4);
 }
 
-.table-headers-queue {
+.table-row:nth-child(even) {
+  background-color: rgba(239, 223, 169, 0.4);
+}
+
+.table-headers, .table-headers-queue {
   width: 20%;
 }
 
+.table-headers h3, .table-headers-queue h3 {
+  font-family: "Lato", sans-serif;
+  text-decoration: underline;
+}
+
+.table-title {
+  text-decoration: underline;
+}
+
 .list {
-  border: 2px solid black;
+  /*border: 3px solid black;*/
+  border-collapse: separate !important;
+  border-radius: 10px;
   /*BORDER RADIUS NOT WORKING FOR SOME REASON*/
   margin: 0 auto;
   min-width: 830px;
@@ -330,8 +366,14 @@ button:hover .menu-icon {
   width: 80%;
 }
 
+.recent-shipped-list {
+  font-size: 0.7em;
+  min-width: 500px;
+  width: 50%;
+}
+
 .tbl-item-detail {
-  border: 1px solid black;
+  border-top: 1px solid black;
   padding: 1em;
   position: relative;
 }
@@ -343,6 +385,41 @@ button:hover .menu-icon {
   width: 80%;
   text-align: right;
 }
+
+.ship-list-detail {
+  border-bottom: 1px solid black;
+  padding: 0.5em;
+  position: relative;
+}
+
+.stage-incomplete {
+  background-color: rgba(224, 142, 133, 0.7);
+  border-radius: 5px;
+  padding: 0.5em;
+}
+
+.stage-complete {
+  background-color: rgba(170, 236, 135, 0.7);
+  border-radius: 5px;
+  padding: 0.5em;
+  text-decoration: underline;
+}
+
+.update-btn {
+  background-color: #83E151;
+  color: black;
+  font-size: 1em;
+  border: 2px solid black;
+  border-radius: 8px;
+}
+
+.update-btn:hover {
+  background-color: black;
+  color: #83E151;
+  border: 2px solid #83E151;
+  border-radius: 8px;
+}
+/*==============================  checkout  =============================*/
 
 .remove-btn {
   font-size: 0.4em;
@@ -426,6 +503,48 @@ button:hover .menu-icon {
 .status-header {
   display: inline-block;
   padding: 1em;
+}
+
+.logo-placeholder {
+  border: 1px solid black;
+  border-radius: 5px;
+  display: inline-block;
+  float: right;
+  padding: 0.5em;
+  margin-right: 40px;
+}
+/*===========================================================================*/
+                        /* ~~~ footer ~~~ */ 
+/*===========================================================================*/
+.footer-container-container {
+  height: auto;
+}
+.footer-container {
+  background-color: #E1E3BC;
+  border: 1px solid black;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom: none;
+  color: #6C0900;
+  font-size: 0.7em;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  max-width: 1200px;
+  min-width: 830px;
+  margin: 0 auto;
+}
+
+.footer-name {
+  float: left;
+  padding: 0.2em 0 0.2em 1em;
+  margin: 0;
+}
+
+.footer-copy {
+  float: right;
+  padding: 0.2em 1em 0.2em 0;
+  margin: 0;
 }
 
 /*===========================================================================*/
