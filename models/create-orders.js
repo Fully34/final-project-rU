@@ -3,7 +3,7 @@ var Customer = require('./customerModel.js');
 
 mongoose.connect(process.env.MONGOLAB_URI || 'mongodb://localhost/cam-store');
 
-  var mockCustomer1 = {
+var mockCustomer1 = {
 
   firstName   : 'Chris',
   lastName    : 'Fullinwider',
@@ -58,7 +58,7 @@ var newMockCustomer1 = new Customer(mockCustomer1);
     console.log('done');
   });
 
-  var mockCustomer2 = {
+var mockCustomer2 = {
 
   firstName   : 'Ken',
   lastName    : 'Sayers',
@@ -113,9 +113,9 @@ var newMockCustomer2 = new Customer(mockCustomer2);
     console.log('done');
   });
 
-    var mockCustomer3 = {
+var mockCustomer3 = {
 
-  firstName   : 'Sarah',
+  firstName   : 'Heather',
   lastName    : 'Fallon',
   order       : [
   {
