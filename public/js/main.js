@@ -521,14 +521,19 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope, adm
     //> send DELETE req to backend --> (handled by app.delete('/api/items/:id'))
     $scope.deleteItem = function(item, index) {
 
-      console.log($scope.items);
+      // console.log($scope.items);
 
-      item.$delete(function(returned) {
+      $scope.check = confirm("Are you sure you want to delete that?!")
 
-        // console.log(returned);
-      });
+      if ($scope.check) {
+        
+        item.$delete(function(returned) {
 
-      $scope.items.splice(index, 1);
+          // console.log(returned);
+        });
+
+        $scope.items.splice(index, 1);
+      }
     }
   });
     

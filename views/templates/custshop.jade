@@ -5,18 +5,25 @@ div(class='container big-wrapper main-container clearfix')
   div(class='shop-header')
     h1 THIS IS A SHOP!
     h2(class='not-orders', ng-if='!takeOrders') We have too many orders! The shop will be back online soon!  Sorry for the inconvenience!
-  div(class='item-container', ng-repeat='item in items', ng-if='item.forSale')
-    h3(class='item-header') {{item.name}}
-    img(class='shop-img' ng-src="{{item.image}}", alt="image")
-    p(class='item-detail') Description: {{item.description}}
-    p(class='item-detail') Price: ${{item.price}}.00
-    button(class='item-detail', ng-click='showForm( item.name, item, 1 )', ng-show='beenOrdered( item ) === -1', ng-if='takeOrders') BUY IT NOW!
+  div(class='item-container clearfix', ng-repeat='item in items', ng-if='item.forSale')
+    //- img(class='shop-img' ng-src="{{item.image}}", alt="image")
+    //- p(class='item-detail') Description: {{item.description}}
+    //- p(class='item-detail') Price: ${{item.price}}.00
+    div(class='photo-container abs-vert-center') 
+      img(src="{{item.image}}", alt="image")
+    div(class='description-container')
+      //- h3(class='item-header') {{item.name}}
+      h3 {{item.name}}
+      p Description: {{item.description}}
+      p Price: {{item.price}}
+      div(class='button-container')
+        button(class='item-detail', ng-click='showForm( item.name, item, 1 )', ng-show='beenOrdered( item ) === -1', ng-if='takeOrders') BUY IT NOW!
+        div(id='item.name', class='purchase-form-container', ng-if='currentItemForm === item.name')
+          form(class='purchase-form', ng-submit='addToCart( item, howMany )')
+            span(class='item-detail', ng-show='showme') How many would you like to order :          
+            input(ng-model='howMany', size='2', ng-show='showme')
+            div(class='btn-container item-detail', ng-show='showme')
+              button(class='item-detail', type='submit', ng-click='showme = false') Add to cart!
+            //- span(class='item-detail', ng-hide='beenOrdered( item ) === -1') Currently in your cart
 
-    div(id='item.name', class='purchase-form-container', ng-if='currentItemForm === item.name')
-      form(class='purchase-form', ng-submit='addToCart( item, howMany )')
-        span(class='item-detail', ng-show='showme') How many would you like to order :          
-        input(ng-model='howMany', size='2', ng-show='showme')
-        div(class='btn-container item-detail', ng-show='showme')
-          button(class='item-detail', type='submit', ng-click='showme = false') Add to cart!
-        //- span(class='item-detail', ng-hide='beenOrdered( item ) === -1') Currently in your cart
 
