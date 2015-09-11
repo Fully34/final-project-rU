@@ -535,7 +535,7 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope, adm
     //============================== login Controller ==============================//
     
 
-    store.controller('login', function($scope, $http, $location, $rootScope) {
+    store.controller('login', function($scope, $http, $location, $rootScope, $window) {
 
       $scope.adminLoggedIn = false;
 
@@ -599,6 +599,8 @@ store.controller('adminHome', function($scope, $http, $location, $rootScope, adm
 
               $scope.adminLoggedIn = true;
 
+              $window.location.reload();
+
               console.log($scope.adminLoggedIn);
 
             } else {
@@ -628,11 +630,7 @@ store.controller('adminHistory', function($scope, $http, $location) {
   console.log('HISTORY CONTROLLER');
 });
 
-
-
-
-
-
+//============================== attempt at navbar ==============================//
 
 
 
