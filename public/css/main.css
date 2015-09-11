@@ -19,6 +19,7 @@
       text-align: center;
       min-height: 500px;
       font-size: 1.2em;
+      box-sizing: border-box;
   }
   
   h1,h2,h3,h4,h5,h6 {
@@ -274,8 +275,9 @@ button:hover .menu-icon {
   border-radius: 20px;
   display: inline-block;
   padding: 1.1em;
-  margin: 20px;
-  width: 45%;
+  position: relative;
+  /*margin: 20px;*/
+  width: 100%;
 }
 
 .item-container h3, p {
@@ -289,6 +291,24 @@ button:hover .menu-icon {
 .item-detail {
   font-family: 'Lato', sans-serif;
   font-weight: 600;
+}
+
+.photo-container {
+  margin: 0 auto;
+  width: 25%;
+}
+
+.description-container {
+  display: inline-block;
+  position: relative;
+  float: right;
+  width: 65%;
+  height: 100%;
+}
+
+.button-container {
+  /*position: absolute;*/
+  text-align: right;
 }
 /*===========================================================================*/
                         /* ~~~ customer shop ~~~ */ 
@@ -567,13 +587,13 @@ button:hover .menu-icon {
                         /* ~~~ media queries ~~~ */ 
 /*===========================================================================*/
 
-@media (max-width: 1000px) {
+/*@media (max-width: 1000px) {
 
   .item-container {
     width: 450px;
     margin: 3em auto;
   }
-}
+}*/
 
 
 

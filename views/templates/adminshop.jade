@@ -2,7 +2,7 @@
 div(class='container big-wrapper main-container clearfix')
   h1 ADMIN CONTROLS THE SHOP FROM HERE!
   div(class='container add-item-btn-container inline-block clearfix', ng-show='!showForm')
-    button(class='add-item-btn' ng-click='toggleForm()') ADD ITEM
+    button(class='add-item-btn', ng-click='toggleForm()') ADD ITEM
   div(class='container add-form-container inline-block clearfix', ng-show='showForm')
     form(ng-submit='addItem()')
       label(for='name') Name:
@@ -10,17 +10,23 @@ div(class='container big-wrapper main-container clearfix')
       label(for='price') Price: 
       input(class='field' type="text", name='price' ng-model='newItem.price')
       label(for='description') Description
-      textarea(class='field  textarea' type="text", name='description' ng-model='newItem.description')
-      select(name="type" ng-model='newItem.type')
+      textarea(class='field  textarea', type="text", name='description', ng-model='newItem.description')
+      select(name="type", ng-model='newItem.type')
         option(value='Art') Art
         option(value='Rack') Rack
-      input(type='submit' ng-click='toggleForm()')
-  div(class=' shop-item-container')
-    div(class='item-container', ng-repeat='item in items track by $index')
-      h3 {{item.name}}
-      img(src="{{item.image}}", alt="image")
-      p Description: {{item.description}}
-      p Price: {{item.price}}
-      p Put it in the shop :
-        input(type="checkbox" ng-model='item.forSale' ng-click='toggleStore( item )')
-        button(ng-model='item' ng-click='deleteItem(item, $index)') DELETE
+      input(type='submit', ng-click='toggleForm()')
+      button(class='add-form-btn', ng-if='showForm', ng-click='toggleForm()') Cancel
+  div(class='shop-item-container')
+    div(class='item-container clearfix', ng-repeat='item in items track by $index')
+      div(class='photo-container abs-vert-center') 
+        img(src="{{item.image}}", alt="image")
+      div(class='description-container')
+        h3 {{item.name}}
+        p Description: {{item.description}}
+        p Price: {{item.price}}
+        p Put it in the shop :
+          input(type="checkbox", ng-model='item.forSale', ng-click='toggleStore( item )')
+        div(class='button-container')
+          button(ng-model='item', ng-click='deleteItem(item, $index)') DELETE
+
+div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolore delectus quo sed. Doloremque nam, quod? Quidem nobis, molestiae magni minima, delectus temporibus amet sequi voluptate id doloribus tempora ullam, ipsum.
